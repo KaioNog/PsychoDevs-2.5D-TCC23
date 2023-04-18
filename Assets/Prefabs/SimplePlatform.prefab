@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2030356704825660220}
   - component: {fileID: 4128286500334688755}
   - component: {fileID: 6191609222102022538}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3353812041314443868}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: e6a975cf2e6773d4db0befb55f0f6443, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -106,7 +106,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6477624261197181731}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SimplePlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
