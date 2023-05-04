@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54d21f6ece3b46479f0c328f8c6007e0, type: 3}
+  m_Name: MenuButtonsGradient
+  m_EditorClassIdentifier: 
+  colorMode: 3
+  topLeft: {r: 1, g: 0.13810158, b: 0.050943315, a: 1}
+  topRight: {r: 0.7924528, g: 0.09514866, b: 0.025418244, a: 1}
+  bottomLeft: {r: 0.6037736, g: 0.053274143, b: 0, a: 1}
+  bottomRight: {r: 0.3962264, g: 0.034097314, b: 0, a: 1}
