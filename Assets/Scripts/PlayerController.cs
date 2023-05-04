@@ -7,13 +7,11 @@ public class PlayerController : MonoBehaviour
 
     public float runSpeed;
     public float walkSpeed;
+    bool facingRight;
 
     Rigidbody myRb;
     Animator myAnim;
 
-    bool facingRight;
-
-    //for jumping
     bool grounded = false;
     Collider[] groundCollisions;
     float groundCheckRadius = 0.2f;
@@ -21,47 +19,50 @@ public class PlayerController : MonoBehaviour
     public Transform groundCheck;
     public float jumpHeight;
 
+    //for wallJump
+    public float gravity = 25;
+    private float verticalVelocity;
+    private CharacterController controller;
+
+
     void Start()
     {
         myRb = GetComponent<Rigidbody>();
         myAnim = GetComponent<Animator>();
+        controller = GetComponent<CharacterController>();
         facingRight = true;
     }
 
     void Update()
-    {
-        
-    }
+    {}
 
-    //o Update é chamado a cada frame, o fixed update é chamado toda vez que um mecanismo físico for executado (run) em um tempo fixo e constante (se atualmente está pressionando o botão)
     void FixedUpdate()
     {
-        //OverlapSphere desenha uma pequena esfere e retorna a colisão
         groundCollisions = Physics.OverlapSphere(groundCheck.position, groundCheckRadius, groundLayer);
         if(groundCollisions.Length>0) 
             grounded = true;
         else grounded = false;
         myAnim.SetBool("grounded", grounded);
 
-        //jump
         if(grounded && Input.GetAxis("Jump") > 0)
         {
             grounded = false;
             myAnim.SetBool("grounded", grounded);
-            //myAnim.SetFloat("verticalSpeed", myRB.velocity.y);
             myRb.AddForce(new Vector3(0, jumpHeight, 0));
         }
 
-        //run and walk
         float move = Input.GetAxis("Horizontal");
-        myAnim.SetFloat("speed",Mathf.Abs (move));
+            myAnim.SetFloat("speed",Mathf.Abs (move));
+            myRb.velocity = new Vector3(move * runSpeed, myRb.velocity.y, 0);
 
-        myRb.velocity = new Vector3(move * runSpeed, myRb.velocity.y, 0);
-
+        //walk
         float sneaking = Input.GetAxisRaw("Fire3");
         myAnim.SetFloat("sneaking",sneaking);
 
-        if(sneaking > 0 && grounded)
+        float firing = Input.GetAxis("Fire1");
+        myAnim.SetFloat("shooting", firing);
+
+        if((sneaking > 0 || firing > 0) && grounded)
         {
             myRb.velocity = new Vector3 (move * walkSpeed, myRb.velocity.y, 0);
         }

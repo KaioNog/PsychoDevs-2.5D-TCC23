@@ -18,7 +18,7 @@ public class fireBullet : MonoBehaviour
     {
         PlayerController myPlayer = transform.root.GetComponent<PlayerController>();
 
-        if(Input.GetAxisRaw("Fire")>0 && nextBullet<Time.time)
+        if(Input.GetAxisRaw("Fire1")>0 && nextBullet<Time.time)
         {
             nextBullet = Time.time + timeBetweenBullets;
             Vector3 rot;
