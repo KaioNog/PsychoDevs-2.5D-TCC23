@@ -16,7 +16,6 @@ public class Health : MonoBehaviour
     public void TakeDamage(float _damage)
     {
         currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
-        Debug.Log(currentHealth);
         
         if(currentHealth > 0)
         {
@@ -31,6 +30,7 @@ public class Health : MonoBehaviour
             dead = true;
             anim.SetTrigger("die");
             GetComponent<zKaiController>().enabled = false;
+            GameManager.instance.ShowGameOver();
             }
         }
     }

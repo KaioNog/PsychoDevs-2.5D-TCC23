@@ -180,8 +180,7 @@ public class zKaiController : MonoBehaviour
 
         if(Physics.Raycast(positionRaycast, this.transform.TransformDirection(Vector3.forward), lengthRaycast, wallLayerMask))
         {
-            Debug.Log("Colisão com parede");
-            Debug.DrawRay(positionRaycast, Vector3.forward * lengthRaycast, Color.red);
+            //Debug.DrawRay(positionRaycast, Vector3.forward * lengthRaycast, Color.red);
 
             if(controller.isGrounded)
             {
