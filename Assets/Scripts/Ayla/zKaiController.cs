@@ -5,8 +5,8 @@ using UnityEngine;
 public class zKaiController : MonoBehaviour
 {
     private Animator Anim;
-    private float velocity = 2f;
-    //private float runVelocity = 3.5f;
+    private float velocity = 3.5f;
+    //private float walkVelocity = 2f;
     private float inputHorizontal;
     private Quaternion playerRotation;
     private Vector3 Moving;

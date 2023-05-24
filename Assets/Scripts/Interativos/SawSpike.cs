@@ -10,7 +10,7 @@ public class SawSpike : MonoBehaviour
     private bool movingLeft;
     private float leftEdge;
     private float rightEdge;
-    private float velocityRotation = 200;
+    private float velocityRotation = 300;
 
     private void Awake()
     {
