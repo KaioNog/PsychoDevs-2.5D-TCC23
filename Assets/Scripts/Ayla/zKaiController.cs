@@ -62,10 +62,9 @@ public class zKaiController : MonoBehaviour
             activeDash = false;
             activeCoyote = true;
             Anim.SetBool("jump", false); 
-            Anim.SetBool("walk", false);
+            Anim.SetBool("run", false);
             Anim.SetBool("dash", false);
             Anim.SetBool("wall", false);
-            Anim.SetBool("run", false);
             if(timeBufferLeap > 0)
             {
                 Leap(jumpForce);
@@ -106,7 +105,7 @@ public class zKaiController : MonoBehaviour
         {
             playerRotation = Quaternion.LookRotation(new Vector3(0, 0, inputHorizontal));
             this.transform.rotation = playerRotation;
-            Anim.SetBool("walk", true);
+            Anim.SetBool("run", true);
         }
 
 
@@ -189,7 +188,7 @@ public class zKaiController : MonoBehaviour
             else
             {
                 Anim.SetBool("jump", false);
-                Anim.SetBool("walk", false);
+                Anim.SetBool("run", false);
                 Anim.SetBool("wall", true);
                 
                 if(!inWall)
