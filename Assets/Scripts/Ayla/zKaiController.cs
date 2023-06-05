@@ -6,7 +6,6 @@ public class zKaiController : MonoBehaviour
 {
     private Animator Anim;
     private float velocity = 3.5f;
-    //private float walkVelocity = 2f;
     private float inputHorizontal;
     private Quaternion playerRotation;
     private Vector3 Moving;
@@ -179,8 +178,6 @@ public class zKaiController : MonoBehaviour
 
         if(Physics.Raycast(positionRaycast, this.transform.TransformDirection(Vector3.forward), lengthRaycast, wallLayerMask))
         {
-            //Debug.DrawRay(positionRaycast, Vector3.forward * lengthRaycast, Color.red);
-
             if(controller.isGrounded)
             {
                 Moving = this.transform.TransformDirection(Vector3.forward) * wallJumpSeparation * velocity * -1;
@@ -208,11 +205,5 @@ public class zKaiController : MonoBehaviour
         }
     }
 
-    /*void onCollisionEnter(Collision collision)
-    {
-        if(collision.gameObject.layer == 7)
-        {
-            Debug.Log("Tocou");
-        }
-    }*/
+
 }
