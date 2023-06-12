@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyControllerFly1 : MonoBehaviour
+public class EnemyController : MonoBehaviour
 {
     public float lookRadius = 10f;
     Transform target;
     NavMeshAgent agent;
+
 
     void Start()
     {
@@ -18,10 +19,24 @@ public class EnemyControllerFly1 : MonoBehaviour
     void Update()
     {
         float distance = Vector3.Distance(target.position, transform.position);
-        if(distance <= lookRadius)
+
+        if (distance <= lookRadius)
         {
             agent.SetDestination(target.position);
+
+            if (distance <= agent.stoppingDistance)
+            {
+                //atk the target
+                FaceTarget();
+            }
         }
+    }
+
+    void FaceTarget()
+    {
+        Vector3 direction = (target.position - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
     }
 
     void OnDrawGizmosSelected()

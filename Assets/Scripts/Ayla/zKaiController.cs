@@ -32,11 +32,16 @@ public class zKaiController : MonoBehaviour
     private float SideWallJump = 18f;
     private float wallJumpSeparation = 2.5f;
 
+    public LayerMask movementMask;
+    Camera cam;
+    public Interactable focus;
+
     private void Start()
     {
         Anim = this.GetComponent<Animator>();
         controller = this.GetComponent<CharacterController>();
         Application.targetFrameRate = 60;
+        cam = Camera.main;
     }
 
     private void Update()
@@ -205,5 +210,11 @@ public class zKaiController : MonoBehaviour
         }
     }
 
+    void Hit()
+    {
+        if(Input.GetKeyDown(KeyCode.K));
+        {
 
+        }
+    }
 }
