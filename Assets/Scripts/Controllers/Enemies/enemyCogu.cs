@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class enemyCogu : MonoBehaviour
 {
-    [SerializeField] private float damage;
+    public GameObject explosionEffect; 
 
-    private void OnTriggerEnter(Collider collision)
+    public void DieExplosion()
     {
-        if(collision.tag == "Player")
-        {
-            collision.GetComponent<Health>().TakeDamage(damage);
-        }
+        Instantiate(explosionEffect, transform.position, transform.rotation);
     }
 }

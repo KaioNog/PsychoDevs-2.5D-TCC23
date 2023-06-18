@@ -15,7 +15,7 @@ public class ManaScoreController : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            playerData.playerDataInstance.AddScore(m:1);
+            playerData.playerDataInstance.AddScore(m:10);
             Destroy(this.gameObject);
         }
     }

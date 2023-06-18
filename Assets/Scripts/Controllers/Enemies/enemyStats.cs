@@ -4,36 +4,38 @@ using UnityEngine;
 
 public class enemyStats : MonoBehaviour
 {
-    private float startingHealth = 5;
-    public float currentHealth { get; private set; }
+    public int maxHealth = 5;
+    public int currentHealth { get; private set; }
     private Animator anim;
     private bool dead;
 
-    private void Awake()
+    private enemyCogu coguExplosion;
+
+    public void Awake()
     {
+        currentHealth = maxHealth;
         anim = GetComponent<Animator>();
-        currentHealth = startingHealth;
+        coguExplosion = GetComponent<enemyCogu>();
     }
 
-    public void TakeDamage(float _damage)
+    public void TakeDamage(int damage)
     {
-        currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
+        damage = Mathf.Clamp(damage, 0, int.MaxValue);
+
+        currentHealth -= damage;
+        Debug.Log(transform.name + "takes" + damage + "damage");
         
-        if(currentHealth > 0)
+        if(currentHealth < 0)
         {
-            anim.SetTrigger("hurt");
-            //iframes
+            Die();
         }
-        else
-        {
-            if(!dead)
-            {
-                Debug.Log("Enemy die");
-                dead = true;
-                anim.SetTrigger("die");
-                //GetComponent<zKaiController>().enabled = false;
-                Destroy(gameObject, 5);            
-            }
-        }
+    }
+ 
+    public virtual void Die()
+    {
+        anim.SetTrigger("die");
+        Debug.Log(transform.name + "died.");
+        Destroy(gameObject); 
+        coguExplosion.DieExplosion();
     }
 }

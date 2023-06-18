@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
-    public float radius = 3f;
+    public float enemyRadius = 3f;
     public Transform interactionTransform;
 
     public void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(interactionTransform.position, radius);
+        Gizmos.DrawWireSphere(interactionTransform.position, enemyRadius);
     }
 
     public virtual void Interact()

@@ -36,6 +36,8 @@ public class zKaiController : MonoBehaviour
     Camera cam;
     public Interactable focus;
 
+    public float interactionRadius = 2f; // Raio de interação com o inimigo
+
     private void Start()
     {
         Anim = this.GetComponent<Animator>();
@@ -47,6 +49,15 @@ public class zKaiController : MonoBehaviour
     private void Update()
     {
         Move();
+
+        if(Input.GetKeyDown(KeyCode.K)) 
+        {
+            Anim.SetBool("atk", true);
+        }
+        else
+        {
+            Anim.SetBool("atk", false);
+        }
     }
 
     void Move()
@@ -123,12 +134,6 @@ public class zKaiController : MonoBehaviour
         {
             StartCoroutine(Dash());
         }
-
-        /*if(Input.GetButtonDown("Fire3") && !inAir)
-        {
-            Moving.z = inputHorizontal * runVelocity;
-            Anim.SetBool("run", true);
-        }*/
 
         controller.Move(Moving*Time.deltaTime);
     }
@@ -207,14 +212,6 @@ public class zKaiController : MonoBehaviour
             inWall = false;
             Anim.SetBool("wall", false);
             gravity = 9.8f;
-        }
-    }
-
-    void Hit()
-    {
-        if(Input.GetKeyDown(KeyCode.K));
-        {
-
         }
     }
 }
