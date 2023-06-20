@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class Enemy : Interactable
 {
-    /*public override void Interact()
-    {
-        base.Interact();
-    }*/
     private enemyStats stats;
 
     private void Awake()
