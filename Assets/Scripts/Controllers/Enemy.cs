@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : Interactable
 {
     private enemyStats stats;
+    [SerializeField] private float damage;
 
     private void Awake()
     {
@@ -37,5 +38,13 @@ public class Enemy : Interactable
         }
 
         return false;
+    }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if(collision.tag == "Player")
+        {
+            collision.GetComponent<Health>().TakeDamage(damage);
+        }
     }
 }
