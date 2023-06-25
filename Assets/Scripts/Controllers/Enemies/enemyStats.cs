@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class enemyStats : MonoBehaviour
 {
+    //public Stat damage;
     public int maxHealth = 5;
     public int currentHealth { get; private set; }
     private Animator anim;

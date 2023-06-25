@@ -13,6 +13,14 @@ public class Health : MonoBehaviour
         currentHealth = startingHealth;
     }
 
+    public void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.T))
+        {
+            TakeDamage(2);
+        }
+    }
+
     public void TakeDamage(float _damage)
     {
         currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);

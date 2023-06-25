@@ -8,12 +8,13 @@ public class EnemyController : MonoBehaviour
     public float lookRadius = 10f;
     Transform target;
     NavMeshAgent agent;
-
+    Animator Anim;
 
     void Start()
     {
         target = playerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
+        Anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -26,9 +27,20 @@ public class EnemyController : MonoBehaviour
 
             if (distance <= agent.stoppingDistance)
             {
-                //atk the target
                 FaceTarget();
+                // Ativar a animação de "walk"
+                Anim.SetBool("walk", false);
             }
+            else
+            {
+                // Desativar a animação de "walk"
+                Anim.SetBool("walk", true);
+            }
+        }
+        else
+        {
+            // Desativar a animação de "walk"
+            Anim.SetBool("walk", false);
         }
     }
 
