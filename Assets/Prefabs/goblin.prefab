@@ -822,6 +822,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyRadius: 2
   interactionTransform: {fileID: 1881334663723304014}
+  damage: 2
 --- !u!114 &1881334663723304009
 MonoBehaviour:
   m_ObjectHideFlags: 0
