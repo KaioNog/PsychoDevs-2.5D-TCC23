@@ -6,8 +6,6 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public GameObject gameOver;
-    public GameObject completeLvlUI;
-
     //public GameObject mainVCam;
     //public GameObject zoomVCam;
 
@@ -21,10 +19,5 @@ public class GameManager : MonoBehaviour
         gameOver.SetActive(true);
         //mainVCam.SetActive(false);
         //zoomVCam.SetActive(true);
-    }
-
-    public void CompleteLevel()
-    {
-        completeLvlUI.SetActive(true);
     }
 }
