@@ -9,7 +9,7 @@ public class playerData : MonoBehaviour
 {
     public static playerData playerDataInstance;
     public TextMeshProUGUI scoreMana;
-    private int numberScoreMana = 0;
+    public int numberScoreMana = 0;
 
     private void Awake()
     {
@@ -24,4 +24,10 @@ public class playerData : MonoBehaviour
         numberScoreMana += m;
         scoreMana.text = "Mana:  " + numberScoreMana;
     }
+
+    public void subtractScore(int m)
+     {
+        numberScoreMana -= m;
+        scoreMana.text = "Mana:  " + numberScoreMana;
+    }   
 }

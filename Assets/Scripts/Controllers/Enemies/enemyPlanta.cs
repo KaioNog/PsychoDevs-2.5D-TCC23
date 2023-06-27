@@ -13,9 +13,9 @@ public class enemyPlanta : Interactable
     private Animator anim;
     private bool dead;
 
-    private float attackInterval = 1.5f;
+    private float attackInterval = 1.8f;
     private float attackTimer;
-    private float attackSpeed = 5f;
+    private float attackSpeed = 4f;
     private float attackLifetime = 5f;
     public float playerAttackRadius = 5f;
 

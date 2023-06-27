@@ -19,6 +19,7 @@ public class zKaiController : MonoBehaviour
     private float velocityDash = 5f;
     private float durationDash = 0.15f;
     private bool activeDash = false;
+    public bool canDash = false;
     private bool activeCoyote = true;
     private float coyoteTime = 0;
     private float coyoteTimeDuration = 0.015f;
@@ -130,9 +131,20 @@ public class zKaiController : MonoBehaviour
             doubleJump = true;
         }
 
-        if(Input.GetButtonDown("Fire2") && !activeDash)
+        if(Input.GetButtonDown("Fire1") && !canDash)
+        {
+            Debug.Log("Dash inativo");
+        }
+        if(Input.GetButtonDown("Fire1") && canDash)
+        {
+            Debug.Log("Mana insuficiente");
+        }
+        if(Input.GetButtonDown("Fire1") && !activeDash && canDash && playerData.playerDataInstance.numberScoreMana >= 10)
         {
             StartCoroutine(Dash());
+            Debug.Log("Dash efetuado");
+
+            playerData.playerDataInstance.subtractScore(m:10);
         }
 
         controller.Move(Moving*Time.deltaTime);
@@ -140,16 +152,17 @@ public class zKaiController : MonoBehaviour
 
     IEnumerator Dash()
     {
-        float initialTime = Time.time;
-        activeDash = true;
-        while (Time.time < initialTime + durationDash)
-        {
-            Anim.SetBool("dash", true);
-            Moving = this.transform.TransformDirection(Vector3.forward * velocityDash);
-            Moving.y = 0;
-            controller.Move(Moving * Time.deltaTime);
-            yield return null;
-        }
+            float initialTime = Time.time;
+            activeDash = true;
+            while (Time.time < initialTime + durationDash)
+            {
+                Anim.SetBool("dash", true);
+                Moving = this.transform.TransformDirection(Vector3.forward * velocityDash);
+                Moving.y = 0;
+                controller.Move(Moving * Time.deltaTime);
+                yield return null;
+            }
+        
     }
 
     void Leap(float force)
