@@ -7,24 +7,25 @@ public class Health : MonoBehaviour
     private Animator anim;
     private bool dead;
 
+    // Propriedade pública para acessar e modificar canDamage
+    public bool CanDamage;
+
     private void Awake()
     {
         anim = GetComponent<Animator>();
         currentHealth = startingHealth;
-    }
-
-    public void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.T))
-        {
-            TakeDamage(2);
-        }
+        CanDamage = true;
     }
 
     public void TakeDamage(float _damage)
     {
-        currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
-        
+        if(CanDamage)
+        {
+            {
+            currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
+            }
+        }
+
         if(currentHealth > 0)
         {
             anim.SetTrigger("hurt");

@@ -7,6 +7,7 @@ public class enemyPlanta : Interactable
     [SerializeField] private GameObject attackPrefab;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject planta;
+    public GameObject explosionEffect; 
 
     public int maxHealth = 5;
     public int currentHealth { get; private set; }
@@ -15,7 +16,7 @@ public class enemyPlanta : Interactable
 
     private float attackInterval = 1.8f;
     private float attackTimer;
-    private float attackSpeed = 4f;
+    public float attackSpeed = 4f;
     private float attackLifetime = 5f;
     public float playerAttackRadius = 5f;
 
@@ -119,9 +120,10 @@ public class enemyPlanta : Interactable
         Debug.Log(transform.name + "died.");
         Destroy(gameObject); 
         Destroy(planta); 
+        Instantiate(explosionEffect, transform.position, transform.rotation);
     }
 
-    public void OnDrawGizmosSelected()
+    public void OnDrawGizmosSelectedEnemy()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(interactionTransform.position, enemyRadius);

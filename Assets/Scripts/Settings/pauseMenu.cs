@@ -54,8 +54,13 @@ public class pauseMenu : MonoBehaviour
         Application.Quit();
     }
 
-    public void Restart()
+    public void Restart1()
     {
         SceneManager.LoadScene("lvl1");
+    }
+
+    public void Restart2()
+    {
+        SceneManager.LoadScene("lvl2");
     }
 }

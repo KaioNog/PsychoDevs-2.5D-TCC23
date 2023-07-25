@@ -55,6 +55,7 @@ public class Enemy : Interactable
             //Anim.SetBool("atk", true);           
             Health playerHealth = FindObjectOfType<Health>();
             playerHealth.TakeDamage(damage);
+            Anim.SetTrigger("atk");
         }
 
     }

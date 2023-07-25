@@ -11,6 +11,7 @@ public class enemyStats : MonoBehaviour
     private bool dead;
 
     private enemyCogu coguExplosion;
+    public GameObject explosionEffect;
 
     public void Awake()
     {
@@ -37,6 +38,7 @@ public class enemyStats : MonoBehaviour
         anim.SetTrigger("die");
         Debug.Log(transform.name + "died.");
         Destroy(gameObject); 
+        Instantiate(explosionEffect, transform.position, transform.rotation);
         coguExplosion.DieExplosion();
     }
 }

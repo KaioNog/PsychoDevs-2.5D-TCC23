@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class powerUpDash : MonoBehaviour
 {
-    public bool canDash;
     public GameObject pickupEffect;
 
     void OnTriggerEnter(Collider other)

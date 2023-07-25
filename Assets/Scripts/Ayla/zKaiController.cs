@@ -36,8 +36,13 @@ public class zKaiController : MonoBehaviour
     public LayerMask movementMask;
     Camera cam;
     public Interactable focus;
-
     public float interactionRadius = 2f; // Raio de interação com o inimigo
+
+    public bool canShield = false;
+    public bool activeShield = false;
+    public float durationShield = 3f;
+    private Health health;
+    public GameObject ShieldEffect;
 
     private void Start()
     {
@@ -131,6 +136,7 @@ public class zKaiController : MonoBehaviour
             doubleJump = true;
         }
 
+        //dash
         if(Input.GetButtonDown("Fire1") && !canDash)
         {
             Debug.Log("Dash inativo");
@@ -144,6 +150,24 @@ public class zKaiController : MonoBehaviour
             StartCoroutine(Dash());
             Debug.Log("Dash efetuado");
 
+            playerData.playerDataInstance.subtractScore(m:10);
+        }
+
+        if(Input.GetButtonDown("Fire2") && !canShield)
+        {
+            Debug.Log("Escudo inativo");
+            return;
+        }
+
+        if(Input.GetButtonDown("Fire2") && canShield)
+        {
+            Debug.Log("Mana insuficiente");
+        }
+
+        if(Input.GetButtonDown("Fire2") && !activeShield && canShield && playerData.playerDataInstance.numberScoreMana >= 10)
+        {
+            Debug.Log("Escudo efetuado");
+            StartCoroutine(Shield());
             playerData.playerDataInstance.subtractScore(m:10);
         }
 
@@ -162,8 +186,29 @@ public class zKaiController : MonoBehaviour
                 controller.Move(Moving * Time.deltaTime);
                 yield return null;
             }
-        
     }
+
+        IEnumerator Shield()
+        {
+            float initialTime = Time.time;
+            activeShield = true;
+
+            // Desativar o dano enquanto o escudo está ativo
+            Health health = GetComponent<Health>();
+            //health.CanDamage = true;
+            health.CanDamage = false;
+            ShieldEffect.SetActive(true);
+
+            while (Time.time < initialTime + durationShield)
+            {
+                yield return null;
+            }
+            // Reativar o dano após o tempo de duração do escudo
+            health.CanDamage = true;
+            activeShield = false;  
+            ShieldEffect.SetActive(false);
+        }
+    
 
     void Leap(float force)
     {
