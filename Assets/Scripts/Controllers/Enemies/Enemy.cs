@@ -38,12 +38,11 @@ public class Enemy : Interactable
             {
                 attackTimer = 0f;
                 AttackPlayer();
-            }
-            /*else
+            }  
+            else
             {
-                Anim.SetBool("atk", false);           
-
-            }*/              
+                Anim.SetBool("atk", false);
+            }         
         }
     }
 
@@ -52,12 +51,10 @@ public class Enemy : Interactable
     {
         if (PlayerInRange())
         {
-            //Anim.SetBool("atk", true);           
+            Anim.SetBool("atk", true);
             Health playerHealth = FindObjectOfType<Health>();
             playerHealth.TakeDamage(damage);
-            Anim.SetTrigger("atk");
         }
-
     }
 
     public override void Interact()
