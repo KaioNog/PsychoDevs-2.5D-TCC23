@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class fallingPlataform : MonoBehaviour
 {
-    public float fallTime = 1f;
-    private float destroyTime = 1.5f;
-    private float reappearTime = 2f;
+    public float fallTime = 0.4f;
+    private float destroyTime = 0.3f;
+    private float reappearTime = 1.5f;
     private Rigidbody rb;
     private Vector3 lastPosition;
 
