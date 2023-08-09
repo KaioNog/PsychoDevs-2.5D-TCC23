@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 622825535}
   - component: {fileID: 622825534}
   m_Layer: 5
-  m_Name: lvl2
+  m_Name: lvl2Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -839,6 +839,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6303b5d4edcd374ab3a7aef99499d63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  changeNextLvlButton: {fileID: 622825532}
 --- !u!4 &2011792275
 Transform:
   m_ObjectHideFlags: 0

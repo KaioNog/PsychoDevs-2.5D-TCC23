@@ -22,4 +22,14 @@ public class gameOverMenu : MonoBehaviour
         Debug.Log("Quitting game...");
         Application.Quit();
     }
+
+    public void Restart1()
+    {
+        SceneManager.LoadScene("lvl1");
+    }
+
+    public void Restart2()
+    {
+        SceneManager.LoadScene("lvl2");
+    }
 }

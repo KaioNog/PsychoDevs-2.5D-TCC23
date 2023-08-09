@@ -3618,6 +3618,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 117529283}
   m_Mesh: {fileID: -3820501696010616384, guid: 0173b4ebab64fe249aaf42559c0bb8d7, type: 3}
+--- !u!1 &117684070 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2952722225744379332, guid: 6902f82e5c0c7694c89f8c796a15b95c, type: 3}
+  m_PrefabInstance: {fileID: 7758593518213838700}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &120318979 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2340421484793895352, guid: 6819baf94613fb64d8b012c762295a53, type: 3}
@@ -12189,6 +12194,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 396722356}
   m_Mesh: {fileID: 4522138712377830974, guid: 0173b4ebab64fe249aaf42559c0bb8d7, type: 3}
+--- !u!1 &400873817 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8023261185404308834, guid: 6902f82e5c0c7694c89f8c796a15b95c, type: 3}
+  m_PrefabInstance: {fileID: 7758593518213838700}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &405071814
 GameObject:
   m_ObjectHideFlags: 0
@@ -21142,6 +21152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 10
+  HurtEffect: {fileID: 8979861215476896065, guid: d262db008b50acf45a9503e5a6a1f251, type: 3}
   CanDamage: 0
 --- !u!114 &728253994
 MonoBehaviour:
@@ -24089,6 +24100,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 816906867}
   m_Mesh: {fileID: 6116101624550502995, guid: 0173b4ebab64fe249aaf42559c0bb8d7, type: 3}
+--- !u!1 &819995766 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5214606216118911146, guid: 6902f82e5c0c7694c89f8c796a15b95c, type: 3}
+  m_PrefabInstance: {fileID: 7758593518213838700}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &821171645
 GameObject:
   m_ObjectHideFlags: 0
@@ -37047,6 +37063,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 225352870}
+  nextLevelButton: {fileID: 1601049997}
+  CanNextLvl: 0
 --- !u!65 &1283216953
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -44612,6 +44630,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1593150812}
   m_Mesh: {fileID: -6350735983872980412, guid: 0173b4ebab64fe249aaf42559c0bb8d7, type: 3}
+--- !u!1 &1601049997 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2545018981256421342, guid: 6902f82e5c0c7694c89f8c796a15b95c, type: 3}
+  m_PrefabInstance: {fileID: 7758593518213838700}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1605300364
 GameObject:
   m_ObjectHideFlags: 0
@@ -51782,7 +51805,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.5642577, g: 0.65758824, b: 0.9433962, a: 1}
+  m_Color: {r: 0.94509804, g: 0.8370123, b: 0.5647059, a: 1}
   m_Intensity: 1.5
   m_Range: 10
   m_SpotAngle: 30
@@ -68275,14 +68298,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1823138619718228419, guid: 6902f82e5c0c7694c89f8c796a15b95c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2303937086708960553, guid: 6902f82e5c0c7694c89f8c796a15b95c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2545018981256421336, guid: 6902f82e5c0c7694c89f8c796a15b95c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1283216952}
+    - target: {fileID: 2545018982948487932, guid: 6902f82e5c0c7694c89f8c796a15b95c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5738021653762047548, guid: 6902f82e5c0c7694c89f8c796a15b95c, type: 3}
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6109208629088325065, guid: 6902f82e5c0c7694c89f8c796a15b95c, type: 3}
+      propertyPath: menuButtonPM
+      value: 
+      objectReference: {fileID: 400873817}
+    - target: {fileID: 6109208629088325065, guid: 6902f82e5c0c7694c89f8c796a15b95c, type: 3}
+      propertyPath: quitButtonPM
+      value: 
+      objectReference: {fileID: 819995766}
+    - target: {fileID: 6109208629088325065, guid: 6902f82e5c0c7694c89f8c796a15b95c, type: 3}
+      propertyPath: resumeButtonPM
+      value: 
+      objectReference: {fileID: 117684070}
     - target: {fileID: 7758593518107359815, guid: 6902f82e5c0c7694c89f8c796a15b95c, type: 3}
       propertyPath: m_Pivot.x
       value: 0

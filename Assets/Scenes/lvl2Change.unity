@@ -839,6 +839,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6303b5d4edcd374ab3a7aef99499d63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  changeNextLvlButton: {fileID: 622825532}
 --- !u!4 &2011792275
 Transform:
   m_ObjectHideFlags: 0

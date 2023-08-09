@@ -1820,6 +1820,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &486807796 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2952722225744379332, guid: 6902f82e5c0c7694c89f8c796a15b95c, type: 3}
+  m_PrefabInstance: {fileID: 1123532895}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &497929462 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2340421484793895352, guid: 6819baf94613fb64d8b012c762295a53, type: 3}
@@ -3227,6 +3232,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 751640621}
   m_Mesh: {fileID: -8827012578797408838, guid: 67c483b96af698f4db21e740bcad0a6e, type: 3}
+--- !u!1 &760084001 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5214606216118911146, guid: 6902f82e5c0c7694c89f8c796a15b95c, type: 3}
+  m_PrefabInstance: {fileID: 1123532895}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &774216526
 GameObject:
   m_ObjectHideFlags: 0
@@ -4839,6 +4849,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6109208629088325065, guid: 6902f82e5c0c7694c89f8c796a15b95c, type: 3}
+      propertyPath: menuButtonPM
+      value: 
+      objectReference: {fileID: 2009900425}
+    - target: {fileID: 6109208629088325065, guid: 6902f82e5c0c7694c89f8c796a15b95c, type: 3}
+      propertyPath: quitButtonPM
+      value: 
+      objectReference: {fileID: 760084001}
+    - target: {fileID: 6109208629088325065, guid: 6902f82e5c0c7694c89f8c796a15b95c, type: 3}
+      propertyPath: resumeButtonPM
+      value: 
+      objectReference: {fileID: 486807796}
     - target: {fileID: 7758593518107359815, guid: 6902f82e5c0c7694c89f8c796a15b95c, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -14312,6 +14334,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2009218390}
   m_Mesh: {fileID: -8195986607734475799, guid: 67c483b96af698f4db21e740bcad0a6e, type: 3}
+--- !u!1 &2009900425 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8023261185404308834, guid: 6902f82e5c0c7694c89f8c796a15b95c, type: 3}
+  m_PrefabInstance: {fileID: 1123532895}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2047032935
 GameObject:
   m_ObjectHideFlags: 0
@@ -100803,6 +100830,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3996840072178442095, guid: ce10df13fc979de4a846767c930268ee, type: 3}
+      propertyPath: HurtEffect
+      value: 
+      objectReference: {fileID: 8979861215476896065, guid: d262db008b50acf45a9503e5a6a1f251, type: 3}
     - target: {fileID: 4340467776017548756, guid: ce10df13fc979de4a846767c930268ee, type: 3}
       propertyPath: m_Name
       value: Ayla

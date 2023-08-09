@@ -2,15 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class pauseMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
 
+    public GameObject resumeButtonPM; //PM = Pause Menu
+    public GameObject menuButtonPM;
+    public GameObject quitButtonPM;
+
+    private GameObject currentButtonPM;
+
     void Start()
     {
-        
+        currentButtonPM = resumeButtonPM;
+        currentButtonPM.GetComponent<Button>().Select();
     }
 
     void Update()
@@ -25,6 +33,38 @@ public class pauseMenu : MonoBehaviour
             {
                 Pause();
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            if (currentButtonPM == resumeButtonPM)
+            {
+                currentButtonPM = menuButtonPM;
+                currentButtonPM.GetComponent<Button>().Select();
+            }
+            else if (currentButtonPM == menuButtonPM)
+            {
+                currentButtonPM = quitButtonPM;
+                currentButtonPM.GetComponent<Button>().Select();
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            if (currentButtonPM == quitButtonPM)
+            {
+                currentButtonPM = menuButtonPM;
+                currentButtonPM.GetComponent<Button>().Select();
+            }
+            else if (currentButtonPM == menuButtonPM)
+            {
+                currentButtonPM = resumeButtonPM;
+                currentButtonPM.GetComponent<Button>().Select();
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
+        {
+            currentButtonPM.GetComponent<Button>().onClick.Invoke();
         }
     }
 
@@ -54,13 +94,4 @@ public class pauseMenu : MonoBehaviour
         Application.Quit();
     }
 
-    public void Restart1()
-    {
-        SceneManager.LoadScene("lvl1");
-    }
-
-    public void Restart2()
-    {
-        SceneManager.LoadScene("lvl2");
-    }
 }

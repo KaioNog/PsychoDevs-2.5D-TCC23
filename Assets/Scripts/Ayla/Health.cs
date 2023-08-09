@@ -6,6 +6,7 @@ public class Health : MonoBehaviour
     public float currentHealth { get; private set; }
     private Animator anim;
     private bool dead;
+    public GameObject HurtEffect;
 
     // Propriedade pública para acessar e modificar canDamage
     public bool CanDamage;
@@ -29,6 +30,7 @@ public class Health : MonoBehaviour
         if(currentHealth > 0)
         {
             anim.SetTrigger("hurt");
+            HurtEffectAyla();
             //iframes
         }
         else
@@ -47,5 +49,13 @@ public class Health : MonoBehaviour
     public void AddHealth(float _value)
     {
         currentHealth = Mathf.Clamp(currentHealth + _value, 0, startingHealth);
+    }
+
+    public void HurtEffectAyla()
+    {
+    Vector3 offset = new Vector3(0f, 0.7f, 0f); // Ajuste vertical desejado
+    Vector3 particlePosition = transform.position + offset;
+    Instantiate(HurtEffect, particlePosition, transform.rotation);        
+    Destroy(HurtEffect,0.3f);
     }
 }
