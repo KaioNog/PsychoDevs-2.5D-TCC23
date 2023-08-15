@@ -24,23 +24,19 @@ public class EnemyController : MonoBehaviour
         if (distance <= lookRadius)
         {
             agent.SetDestination(target.position);
-
             if (distance <= agent.stoppingDistance)
             {
                 FaceTarget();
-                // Ativar a animação de "walk"
-                Anim.SetBool("walk", false);
             }
             else
             {
-                // Desativar a animação de "walk"
-                Anim.SetBool("walk", true);
+            Anim.SetBool("walk", true);
             }
         }
         else
         {
-            // Desativar a animação de "walk"
-            Anim.SetBool("walk", false);
+                        Anim.SetBool("walk", false);
+
         }
     }
 
