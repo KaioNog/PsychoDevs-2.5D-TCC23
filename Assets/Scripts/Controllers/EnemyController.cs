@@ -24,6 +24,7 @@ public class EnemyController : MonoBehaviour
         if (distance <= lookRadius)
         {
             agent.SetDestination(target.position);
+
             if (distance <= agent.stoppingDistance)
             {
                 FaceTarget();
@@ -35,7 +36,7 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
-                        Anim.SetBool("walk", false);
+            Anim.SetBool("walk", false);
 
         }
     }

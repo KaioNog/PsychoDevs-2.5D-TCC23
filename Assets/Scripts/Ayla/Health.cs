@@ -56,6 +56,6 @@ public class Health : MonoBehaviour
     Vector3 offset = new Vector3(0f, 0.7f, 0f); // Ajuste vertical desejado
     Vector3 particlePosition = transform.position + offset;
     Instantiate(HurtEffect, particlePosition, transform.rotation);        
-    Destroy(HurtEffect,0.3f);
+    //Destroy(HurtEffect,0.3f);
     }
 }
