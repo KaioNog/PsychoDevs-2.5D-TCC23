@@ -5,6 +5,7 @@ using UnityEngine;
 public class powerUpShoot : MonoBehaviour
 {
     public GameObject pickupEffect;
+    public ProjectileSpawn projectileSpawn; // Referência ao script ProjectileSpawn
 
     void OnTriggerEnter(Collider other)
     {
@@ -18,10 +19,9 @@ public class powerUpShoot : MonoBehaviour
     {
         Instantiate(pickupEffect, transform.position, transform.rotation);
 
-        //zKaiController controller = player.GetComponent<zKaiController>();
-        //controller.canShield = true;
+        projectileSpawn.canShoot = true;
 
-        Debug.Log("Escudo ativado");
+        Debug.Log("Tiro ativado");
         Destroy(gameObject);
     }
 }

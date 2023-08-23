@@ -83,5 +83,10 @@ public class Enemy : Interactable
         {
             collision.GetComponent<Health>().TakeDamage(damage);
         }
+
+        if(collision.gameObject.CompareTag("Shoot"))
+        {
+            stats.TakeDamage(1);
+        }
     }
 }

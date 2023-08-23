@@ -10,31 +10,63 @@ public class ProjectileSpawn : MonoBehaviour
     private GameObject effectToSpawn;
     private float timeToFire = 0;
 
-    public void Start()
+    public bool canShoot;
+    public playerData playerDataInstance;
+    public ChangeHairColor hairColorChanger;
+    //private float durationShoot = 1f;
+
+    private void Start()
     {
+        hairColorChanger = GetComponent<ChangeHairColor>();
         effectToSpawn = vfx [0];
+        canShoot = false;
     }
 
-    // Update is called once per frame
     public void Update()
     {
-        if(Input.GetKey(KeyCode.J) && Time.time >= timeToFire) 
+        if(Input.GetKey(KeyCode.J) && Time.time >= timeToFire && !canShoot) 
+        {
+            Debug.Log("Shoot inativo");
+        }
+
+        if(Input.GetKey(KeyCode.J) && Time.time >= timeToFire && canShoot) 
+        {
+            Debug.Log("Mana insuficiente");
+        }
+
+        if(Input.GetKey(KeyCode.J) && Time.time >= timeToFire && canShoot && playerData.playerDataInstance.numberScoreMana >= 10) 
         {
             timeToFire = Time.time + 1 / effectToSpawn.GetComponent<ProjectileMove>().fireRate;
+
             SpawnVFX();
-        }
+
+            Debug.Log("Shoot efetuado");
+            playerData.playerDataInstance.subtractScore(m:10);
+        }    
     }
 
-    public void SpawnVFX()
+    void SpawnVFX()
     {
+        //float initialTime = Time.time;
         GameObject vfx;
         if(firePoint != null)
         {
             vfx = Instantiate (effectToSpawn, firePoint.transform.position, Quaternion.identity);
+            Debug.Log("Atirou");
+            hairColorChanger.ChangeHairToPink();
+            Debug.Log("cabelo rosa");
+
+            /*while (Time.time < initialTime + durationShoot)
+            {
+                yield return null;
+            }*/
+
+            //hairColorChanger.ResetHairColor();
         }
         else
         {
             Debug.Log("No Fire Point");
         }
+        
     }
 }

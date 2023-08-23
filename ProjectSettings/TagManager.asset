@@ -7,6 +7,7 @@ TagManager:
   - Wall
   - Trampoline
   - Obstacle
+  - Shoot
   layers:
   - Default
   - TransparentFX

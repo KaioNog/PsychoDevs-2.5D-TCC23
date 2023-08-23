@@ -43,6 +43,8 @@ public class zKaiController : MonoBehaviour
     public float durationShield = 3f;
     private Health health;
     public GameObject ShieldEffect;
+    public GameObject DashEffect;
+    public ChangeHairColor hairColorChanger;
 
     private void Start()
     {
@@ -50,6 +52,7 @@ public class zKaiController : MonoBehaviour
         controller = this.GetComponent<CharacterController>();
         Application.targetFrameRate = 60;
         cam = Camera.main;
+        hairColorChanger = GetComponent<ChangeHairColor>();
     }
 
     private void Update()
@@ -178,14 +181,20 @@ public class zKaiController : MonoBehaviour
     {
             float initialTime = Time.time;
             activeDash = true;
+            DashEffect.SetActive(true);
+            hairColorChanger.ChangeHairToYellow(); 
+
             while (Time.time < initialTime + durationDash)
             {
                 Anim.SetBool("dash", true);
+                
                 Moving = this.transform.TransformDirection(Vector3.forward * velocityDash);
                 Moving.y = 0;
                 controller.Move(Moving * Time.deltaTime);
                 yield return null;
             }
+            DashEffect.SetActive(false);
+            hairColorChanger.ResetHairColor(); 
     }
 
         IEnumerator Shield()
@@ -199,16 +208,19 @@ public class zKaiController : MonoBehaviour
             health.CanDamage = false;
             ShieldEffect.SetActive(true);
 
+            hairColorChanger.ChangeHairToBlue();
+
             while (Time.time < initialTime + durationShield)
             {
                 yield return null;
             }
+
             // Reativar o dano após o tempo de duração do escudo
             health.CanDamage = true;
             activeShield = false;  
             ShieldEffect.SetActive(false);
+            hairColorChanger.ResetHairColor();
         }
-    
 
     void Leap(float force)
     {
