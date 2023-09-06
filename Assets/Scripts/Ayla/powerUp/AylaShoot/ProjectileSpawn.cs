@@ -13,11 +13,11 @@ public class ProjectileSpawn : MonoBehaviour
     public bool canShoot;
     public playerData playerDataInstance;
     public ChangeHairColor hairColorChanger;
-    //private float durationShoot = 1f;
+    private float durationShoot = 1f;
 
     private void Start()
     {
-        hairColorChanger = GetComponent<ChangeHairColor>();
+        //hairColorChanger = GetComponent<ChangeHairColor>();
         effectToSpawn = vfx [0];
         canShoot = false;
     }
@@ -37,17 +37,16 @@ public class ProjectileSpawn : MonoBehaviour
         if(Input.GetKey(KeyCode.J) && Time.time >= timeToFire && canShoot && playerData.playerDataInstance.numberScoreMana >= 10) 
         {
             timeToFire = Time.time + 1 / effectToSpawn.GetComponent<ProjectileMove>().fireRate;
-
-            SpawnVFX();
+            StartCoroutine(SpawnVFX());
 
             Debug.Log("Shoot efetuado");
             playerData.playerDataInstance.subtractScore(m:10);
         }    
     }
 
-    void SpawnVFX()
+    IEnumerator SpawnVFX()
     {
-        //float initialTime = Time.time;
+        float initialTime = Time.time;
         GameObject vfx;
         if(firePoint != null)
         {
@@ -56,12 +55,12 @@ public class ProjectileSpawn : MonoBehaviour
             hairColorChanger.ChangeHairToPink();
             Debug.Log("cabelo rosa");
 
-            /*while (Time.time < initialTime + durationShoot)
+            while (Time.time < initialTime + durationShoot)
             {
                 yield return null;
-            }*/
+            }
 
-            //hairColorChanger.ResetHairColor();
+            hairColorChanger.ResetHairColor();
         }
         else
         {
