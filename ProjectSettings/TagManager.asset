@@ -8,6 +8,8 @@ TagManager:
   - Trampoline
   - Obstacle
   - Shoot
+  - ToxicWater
+  - Boat
   layers:
   - Default
   - TransparentFX
@@ -18,7 +20,7 @@ TagManager:
   - Shootable
   - Wall
   - Player
-  - 
+  - Enemy
   - 
   - 
   - 

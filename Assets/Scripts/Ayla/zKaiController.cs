@@ -16,8 +16,8 @@ public class zKaiController : MonoBehaviour
     private float trampolineForce = 9f;
     private bool inAir = false;
     private bool doubleJump = false;
-    private float velocityDash = 5f;
-    private float durationDash = 0.15f;
+    private float velocityDash = 6f;
+    private float durationDash = 0.20f;
     private bool activeDash = false;
     public bool canDash = false;
     private bool activeCoyote = true;
@@ -46,6 +46,10 @@ public class zKaiController : MonoBehaviour
     public GameObject DashEffect;
     public ChangeHairColor hairColorChanger;
 
+    private Transform barcoTransform; // Referência ao transform do barco
+    private Vector3 offset; // Offset entre o jogador e o barco
+    private bool isOnBoat; // Flag para verificar se o jogador está no barco
+
     private void Start()
     {
         Anim = this.GetComponent<Animator>();
@@ -66,6 +70,21 @@ public class zKaiController : MonoBehaviour
         else
         {
             Anim.SetBool("atk", false);
+        }
+
+
+        // Verifica se o jogador está no barco
+        if (isOnBoat && Input.GetButtonDown("Jump"))
+        {
+            // Faz o jogador pular enquanto está no barco
+            JumpFromBoat();
+        }
+        // Verifica se o jogador está no barco
+        if (barcoTransform != null)
+        {
+            // Move o jogador com base no movimento do barco e no offset
+            Vector3 newPosition = barcoTransform.position + offset;
+            transform.position = newPosition;
         }
     }
 
@@ -283,5 +302,37 @@ public class zKaiController : MonoBehaviour
             Anim.SetBool("wall", false);
             gravity = 9.8f;
         }
+    }
+
+
+    // Método chamado quando o jogador entra no trigger do barco
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Boat"))
+        {
+            barcoTransform = other.transform;
+            offset = transform.position - barcoTransform.position;
+            isOnBoat = true;
+        }
+    }
+
+    // Método chamado quando o jogador sai do trigger do barco
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Boat"))
+        {
+            barcoTransform = null;
+            offset = Vector3.zero;
+            isOnBoat = false;
+        }
+    }
+
+    // Método para fazer o jogador pular para fora do barco
+    public void JumpFromBoat()
+    {
+        Debug.Log("Saltou do barco");
+        isOnBoat = false;
+        barcoTransform = null;
+        offset = Vector3.zero;
     }
 }

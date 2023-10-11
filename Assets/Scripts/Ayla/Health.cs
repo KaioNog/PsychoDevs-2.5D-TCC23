@@ -58,4 +58,12 @@ public class Health : MonoBehaviour
     Instantiate(HurtEffect, particlePosition, transform.rotation);        
     //Destroy(HurtEffect,0.3f);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "ToxicWater")
+        {
+            TakeDamage(20);
+        }
+    }
 }

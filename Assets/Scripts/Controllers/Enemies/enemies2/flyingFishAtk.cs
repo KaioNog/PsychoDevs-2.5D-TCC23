@@ -101,7 +101,7 @@ public class flyingFishAtk : Interactable
         damage = Mathf.Clamp(damage, 0, int.MaxValue);
 
         currentHealth -= damage;
-        Debug.Log(transform.name + "takes" + damage + "damage");
+        //Debug.Log(transform.name + "takes" + damage + "damage");
         
         if(currentHealth < 0)
         {
@@ -113,7 +113,7 @@ public class flyingFishAtk : Interactable
     public virtual void Die()
     {
         //anim.SetTrigger("die");
-        Debug.Log(transform.name + "died.");
+        //Debug.Log(transform.name + "died.");
         Destroy(gameObject); 
         Destroy(fish); 
     }
