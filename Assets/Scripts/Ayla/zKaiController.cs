@@ -203,6 +203,9 @@ public class zKaiController : MonoBehaviour
             DashEffect.SetActive(true);
             hairColorChanger.ChangeHairToYellow(); 
 
+            CameraFollow cameraZoom = Camera.main.GetComponent<CameraFollow>();
+            float startFOV = Camera.main.fieldOfView;
+
             while (Time.time < initialTime + durationDash)
             {
                 Anim.SetBool("dash", true);
@@ -210,8 +213,15 @@ public class zKaiController : MonoBehaviour
                 Moving = this.transform.TransformDirection(Vector3.forward * velocityDash);
                 Moving.y = 0;
                 controller.Move(Moving * Time.deltaTime);
+
+                // Calcula o novo FOV durante o Dash (pode ajustar o valor do FOV como desejado)
+                float newFOV = Mathf.Lerp(startFOV, startFOV * 0.8f, (Time.time - initialTime) / durationDash);
+                Camera.main.fieldOfView = newFOV;
+
                 yield return null;
             }
+
+            Camera.main.fieldOfView = startFOV;
             DashEffect.SetActive(false);
             hairColorChanger.ResetHairColor(); 
     }

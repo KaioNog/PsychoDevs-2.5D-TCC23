@@ -8,7 +8,6 @@ public class Health : MonoBehaviour
     private bool dead;
     public GameObject HurtEffect;
 
-    // Propriedade pública para acessar e modificar canDamage
     public bool CanDamage;
 
     private void Awake()
@@ -24,6 +23,13 @@ public class Health : MonoBehaviour
         {
             {
             currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
+
+            CameraFollow cameraShake = Camera.main.GetComponent<CameraFollow>();
+            if (cameraShake != null)
+            {
+                cameraShake.TriggerShake();
+            }
+
             }
         }
 
