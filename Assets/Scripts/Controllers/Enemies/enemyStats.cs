@@ -39,6 +39,6 @@ public class enemyStats : MonoBehaviour
         //Debug.Log(transform.name + "died.");
         Destroy(gameObject); 
         Instantiate(explosionEffect, transform.position, transform.rotation);
-        coguExplosion.DieExplosion();
+        //coguExplosion.DieExplosion();
     }
 }

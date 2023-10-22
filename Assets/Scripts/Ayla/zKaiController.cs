@@ -50,6 +50,10 @@ public class zKaiController : MonoBehaviour
     private Vector3 offset; // Offset entre o jogador e o barco
     private bool isOnBoat; // Flag para verificar se o jogador está no barco
 
+    private int attackCount = 0;
+    private bool isSpecialAttack = false;
+    private int attacksForSpecial = 5;
+
     private void Start()
     {
         Anim = this.GetComponent<Animator>();
@@ -63,26 +67,40 @@ public class zKaiController : MonoBehaviour
     {
         Move();
 
-        if(Input.GetKeyDown(KeyCode.K)) 
+        if (Input.GetKeyDown(KeyCode.K) && !isSpecialAttack)  
         {
-            Anim.SetBool("atk", true);
-        }
-        else
+            if (attackCount < attacksForSpecial) 
+            {
+                Anim.SetBool("atk", true);
+                attackCount++;
+            } 
+            else
+            {
+                isSpecialAttack = true;
+                Anim.SetBool("atk", false);
+                Anim.SetBool("specialAttack", true);
+            }
+        } 
+        else 
         {
             Anim.SetBool("atk", false);
+            Anim.SetBool("specialAttack", false);
         }
 
+        if (isSpecialAttack && Anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f) 
+        {
+            attackCount = 0;
+            isSpecialAttack = false;
+            Anim.SetBool("specialAttack", false);
+            Anim.SetBool("atk", true);
+        }
 
-        // Verifica se o jogador está no barco
         if (isOnBoat && Input.GetButtonDown("Jump"))
         {
-            // Faz o jogador pular enquanto está no barco
             JumpFromBoat();
         }
-        // Verifica se o jogador está no barco
         if (barcoTransform != null)
         {
-            // Move o jogador com base no movimento do barco e no offset
             Vector3 newPosition = barcoTransform.position + offset;
             transform.position = newPosition;
         }

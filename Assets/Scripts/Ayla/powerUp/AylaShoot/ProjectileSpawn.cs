@@ -15,9 +15,10 @@ public class ProjectileSpawn : MonoBehaviour
     public ChangeHairColor hairColorChanger;
     private float durationShoot = 1f;
 
+    public Animator playerAnimator; // Referência ao componente Animator do jogador
+
     private void Start()
     {
-        //hairColorChanger = GetComponent<ChangeHairColor>();
         effectToSpawn = vfx [0];
         canShoot = false;
     }
@@ -53,7 +54,7 @@ public class ProjectileSpawn : MonoBehaviour
             vfx = Instantiate (effectToSpawn, firePoint.transform.position, Quaternion.identity);
             Debug.Log("Atirou");
             hairColorChanger.ChangeHairToPink();
-            Debug.Log("cabelo rosa");
+            playerAnimator.SetTrigger("shoot");
 
             while (Time.time < initialTime + durationShoot)
             {
