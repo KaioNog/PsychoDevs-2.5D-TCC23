@@ -12,6 +12,7 @@ public class Dialogue : MonoBehaviour
     public float radious;
     private bool onRadious;
     private DialogueControl dc;
+    private bool dialogueShown = false;
 
     private void Start()
     {
@@ -25,10 +26,11 @@ public class Dialogue : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && onRadious)
+        if (onRadious && !dialogueShown)
         {
             dc.Speech(profile, speechTxt, actorName);
             radious = 0;
+            dialogueShown = true;
         }
     }
 

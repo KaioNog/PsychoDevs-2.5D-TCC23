@@ -19,11 +19,14 @@ public class enemyPlanta : Interactable
     public float attackSpeed = 4f;
     private float attackLifetime = 5f;
     public float playerAttackRadius = 5f;
+    private CameraZoom cameraZoom; // Adicione esta referência
 
     private void Awake()
     {
         currentHealth = maxHealth;
         anim = GetComponent<Animator>();
+        cameraZoom = Camera.main.GetComponent<CameraZoom>(); // Obtém a referência do componente CameraZoom
+
     }
 
     public void Update()
@@ -121,6 +124,7 @@ public class enemyPlanta : Interactable
         Destroy(gameObject); 
         Destroy(planta); 
         Instantiate(explosionEffect, transform.position, transform.rotation);
+        cameraZoom.DeactivateZoom();
     }
 
     public void OnDrawGizmosSelectedEnemy()

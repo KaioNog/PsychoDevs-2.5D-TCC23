@@ -57,4 +57,14 @@ public class CameraFollow : MonoBehaviour
         // Reseta a posição da câmera para a posição inicial
         transform.position = initialPosition;
     }
+    
+    public void ChangeFOV(float newFOV)
+    {
+        Camera.main.fieldOfView = newFOV;
+    }
+
+    public void ResetFOV()
+    {
+        Camera.main.fieldOfView = initialFOV;
+    }
 }

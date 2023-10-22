@@ -12,14 +12,15 @@ public class enemyPlantaAppearance : MonoBehaviour
     private bool isAboveGround;
 
     private Animator anim;
-
+    private CameraZoom cameraZoom; // Adicione esta referência
+    
     private void Start()
     {
         miniBossTransform = transform;
         initialPosition = miniBossTransform;
         isAboveGround = false;
-
         anim = GetComponent<Animator>();
+        cameraZoom = Camera.main.GetComponent<CameraZoom>(); // Obtém a referência do componente CameraZoom
     }
 
     private void Update()
@@ -29,8 +30,8 @@ public class enemyPlantaAppearance : MonoBehaviour
             // Ative a aparição acima da terra.
             miniBossTransform.position = aboveGroundPosition.position;
             isAboveGround = true;
-
-                anim.SetBool("Appearance", true);           
+            anim.SetBool("Appearance", true);  
+            cameraZoom.ActivateZoom(); 
         }
     }
 
@@ -49,9 +50,9 @@ public class enemyPlantaAppearance : MonoBehaviour
         return false;
     }
 
-    public void OnDrawGizmosSelected()
+    /*public void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(miniBossTransform.position, playerDetectionRadius);
-    }
+    }*/
 }
