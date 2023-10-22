@@ -61,6 +61,7 @@ public class zKaiController : MonoBehaviour
         Application.targetFrameRate = 60;
         cam = Camera.main;
         hairColorChanger = GetComponent<ChangeHairColor>();
+        FindObjectOfType<AudioManager>().Play("TrilhaSonora");       
     }
 
     private void Update()

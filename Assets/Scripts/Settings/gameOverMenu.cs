@@ -32,4 +32,9 @@ public class gameOverMenu : MonoBehaviour
     {
         SceneManager.LoadScene("lvl2");
     }
+
+    public void Restart3()
+    {
+        SceneManager.LoadScene("lvl3");
+    }
 }

@@ -25,7 +25,6 @@ public class enemyStats : MonoBehaviour
         damage = Mathf.Clamp(damage, 0, int.MaxValue);
 
         currentHealth -= damage;
-        //Debug.Log(transform.name + "takes" + damage + "damage");
         
         if(currentHealth < 0)
         {
@@ -35,8 +34,7 @@ public class enemyStats : MonoBehaviour
  
     public virtual void Die()
     {
-        anim.SetTrigger("die");
-        //Debug.Log(transform.name + "died.");
+        //anim.SetTrigger("die");
         Destroy(gameObject); 
         Instantiate(explosionEffect, transform.position, transform.rotation);
         //coguExplosion.DieExplosion();

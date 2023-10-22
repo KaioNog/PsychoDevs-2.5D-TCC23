@@ -36,6 +36,11 @@ public class endLvlTrigger : MonoBehaviour
     {
         gameManager.CompleteLevel();
         CanNextLvl = true;
+            // Parar a música da fase
+            FindObjectOfType<AudioManager>().Stop("TrilhaSonora");
+            
+            // Iniciar a música de vitória
+            FindObjectOfType<AudioManager>().Play("Win");       
     }
 
     public void LoadNextLevel()

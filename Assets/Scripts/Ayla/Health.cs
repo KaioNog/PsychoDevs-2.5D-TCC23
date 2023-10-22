@@ -48,6 +48,11 @@ public class Health : MonoBehaviour
             anim.SetTrigger("die");
             GetComponent<zKaiController>().enabled = false;
             GameManager.instance.ShowGameOver();
+                    // Para a música da fase
+        FindObjectOfType<AudioManager>().Stop("TrilhaSonora");
+
+        // Inicia a música de Game Over
+        FindObjectOfType<AudioManager>().Play("GameOver");  
             }
         }
     }
@@ -59,6 +64,7 @@ public class Health : MonoBehaviour
 
     public void HurtEffectAyla()
     {
+    FindObjectOfType<AudioManager>().Play("Dano"); 
     Vector3 offset = new Vector3(0f, 0.7f, 0f); // Ajuste vertical desejado
     Vector3 particlePosition = transform.position + offset;
     Instantiate(HurtEffect, particlePosition, transform.rotation);        

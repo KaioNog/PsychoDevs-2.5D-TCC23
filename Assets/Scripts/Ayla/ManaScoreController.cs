@@ -13,6 +13,7 @@ public class ManaScoreController : MonoBehaviour
             playerData.playerDataInstance.AddScore(m:10);
             Instantiate(pickupEffect, transform.position, transform.rotation);
             Destroy(this.gameObject);
+            FindObjectOfType<AudioManager>().Play("ColetaMana"); 
         }
     }
 }

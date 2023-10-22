@@ -24,5 +24,8 @@ public class powerUpDash : MonoBehaviour
         Debug.Log("Dash ativado");
 
         Destroy(gameObject);
+        
+        FindObjectOfType<AudioManager>().Play("ColetavePowerUp"); 
+
     }
 }
