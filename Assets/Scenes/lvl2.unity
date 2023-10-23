@@ -11131,31 +11131,31 @@ MonoBehaviour:
     loop: 1
     source: {fileID: 0}
   - name: Win
-    clip: {fileID: 8300000, guid: f7469e11f527e6048ba1bad9695f5f06, type: 3}
+    clip: {fileID: 8300000, guid: 91774e9b8bb99e549bf2f97b2ce5aaef, type: 3}
     volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: GameOver
-    clip: {fileID: 8300000, guid: 84674d84ac649ce48af218771661d9c1, type: 3}
+    clip: {fileID: 8300000, guid: e10f217396fcc804ea3c3b6eb78c6f3c, type: 3}
     volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Dano
-    clip: {fileID: 8300000, guid: 2f5976692884763418e0b2d50b09c13f, type: 3}
+    clip: {fileID: 8300000, guid: 15ebd9e476a96a445aa0065da52928ca, type: 3}
     volume: 0.8
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: ColetaMana
-    clip: {fileID: 8300000, guid: 89505fbdcede6924abb1961eb3170da6, type: 3}
+    clip: {fileID: 8300000, guid: 6be5ad895f6be5d42a3a1aee06d88a5a, type: 3}
     volume: 0.8
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: ColetaPowerUp
-    clip: {fileID: 8300000, guid: 9a81ac1c00ba4c6479233ee363e1029c, type: 3}
+    clip: {fileID: 8300000, guid: fa868bc8d0f86e74f8e0c05743a6f047, type: 3}
     volume: 0.8067125
     pitch: 1
     loop: 0
