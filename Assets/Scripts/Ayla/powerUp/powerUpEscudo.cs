@@ -23,5 +23,7 @@ public class powerUpEscudo : MonoBehaviour
 
         Debug.Log("Escudo ativado");
         Destroy(gameObject);
+
+        FindObjectOfType<AudioManager>().Play("ColetaPowerUp"); 
     }
 }

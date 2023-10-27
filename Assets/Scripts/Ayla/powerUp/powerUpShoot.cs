@@ -23,5 +23,6 @@ public class powerUpShoot : MonoBehaviour
 
         Debug.Log("Tiro ativado");
         Destroy(gameObject);
+        FindObjectOfType<AudioManager>().Play("ColetaPowerUp"); 
     }
 }

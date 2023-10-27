@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class Teleporte : MonoBehaviour
 {
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            // Aumenta o eixo Z do jogador em 10
-            Vector3 newPosition = other.transform.position;
-            newPosition.z += 10f;
-            other.transform.position = newPosition;
+            // Move o jogador 20 unidades no eixo Z
+            other.transform.Translate(Vector3.forward * 25f);
         }
     }
 }
