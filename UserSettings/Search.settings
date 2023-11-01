@@ -11,12 +11,15 @@ scopes = {
 	"last_search.DA949528" = "kakk"
 	"OpenInspectorPreview.DA949528" = "0"
 	"currentGroup.DA949528" = "all"
-	"last_search.310DEAF1" = "kakk"
+	"last_search.310DEAF1" = "dk"
 	"OpenInspectorPreview.310DEAF1" = "0"
 	"currentGroup.310DEAF1" = "all"
 	"last_search.3BE40471" = ""
 	"OpenInspectorPreview.3BE40471" = "0"
 	"currentGroup.3BE40471" = "all"
+	"last_search.388C2F70" = ""
+	"OpenInspectorPreview.388C2F70" = "0"
+	"currentGroup.388C2F70" = "all"
 }
 providers = {
 	adb = {

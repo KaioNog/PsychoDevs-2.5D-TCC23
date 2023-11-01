@@ -20,13 +20,14 @@ public class enemyPlanta : Interactable
     private float attackLifetime = 5f;
     public float playerAttackRadius = 5f;
     private CameraZoom cameraZoom; // Adicione esta referência
+    private Animator plantaAnimator; // Referência ao Animator do objeto pai
 
     private void Awake()
     {
         currentHealth = maxHealth;
         anim = GetComponent<Animator>();
-        cameraZoom = Camera.main.GetComponent<CameraZoom>(); // Obtém a referência do componente CameraZoom
-
+        plantaAnimator = GetComponentInParent<Animator>();
+        cameraZoom = Camera.main.GetComponent<CameraZoom>();
     }
 
     public void Update()
@@ -56,16 +57,18 @@ public class enemyPlanta : Interactable
     }
 
 
-    private void AttackPlayer()
+    public void AttackPlayer()
     {
         if (PlayerInRange())
         {
+
             GameObject attackInstance = Instantiate(attackPrefab, transform.position, Quaternion.identity);
             enemyPlantaAtk attackComponent = attackInstance.GetComponent<enemyPlantaAtk>();
 
             attackComponent.SetAttackDirection(player.transform);
 
             Destroy(attackInstance, attackLifetime);
+
         }
     }
 
@@ -104,6 +107,7 @@ public class enemyPlanta : Interactable
         return false;
     }   
 
+
     public void TakeDamage(int damage)
     {
         damage = Mathf.Clamp(damage, 0, int.MaxValue);
@@ -134,5 +138,20 @@ public class enemyPlanta : Interactable
 
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(interactionTransform.position, playerAttackRadius);
+    }
+
+        public void StartAttack()
+    {
+        GameObject attackInstance = Instantiate(attackPrefab, transform.position, Quaternion.identity);
+        enemyPlantaAtk attackComponent = attackInstance.GetComponent<enemyPlantaAtk>();
+
+        attackComponent.SetAttackDirection(player.transform);
+
+        Destroy(attackInstance, attackLifetime);
+    }
+
+    public void StartAttackEvent()
+    {
+        StartAttack();
     }
 }

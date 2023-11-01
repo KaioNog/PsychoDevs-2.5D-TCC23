@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Teleporte : MonoBehaviour
 {
+    public float DistanciaTeleporte = 20f;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            // Move o jogador 20 unidades no eixo Z
-            other.transform.Translate(Vector3.forward * 25f);
+            other.transform.Translate(Vector3.forward * DistanciaTeleporte);
         }
     }
 }

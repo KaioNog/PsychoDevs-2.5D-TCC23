@@ -31,7 +31,8 @@ public class zKaiController : MonoBehaviour
     private float centerRaycast = 0.5f;
     public LayerMask wallLayerMask;
     private float SideWallJump = 18f;
-    private float wallJumpSeparation = 2.5f;
+    private float wallJumpSeparation = 1f;
+    public GameObject wallJumpEffect;
 
     public LayerMask movementMask;
     Camera cam;
@@ -68,7 +69,7 @@ public class zKaiController : MonoBehaviour
     {
         Move();
 
-        if (Input.GetKeyDown(KeyCode.K) && !isSpecialAttack)  
+        /*if (Input.GetKeyDown(KeyCode.K) && !isSpecialAttack)  
         {
             if (attackCount < attacksForSpecial) 
             {
@@ -94,6 +95,15 @@ public class zKaiController : MonoBehaviour
             isSpecialAttack = false;
             Anim.SetBool("specialAttack", false);
             Anim.SetBool("atk", true);
+        }*/
+
+        if (Input.GetKeyDown(KeyCode.K))  
+        {
+            Anim.SetBool("atk", true);
+        } 
+        else 
+        {
+            Anim.SetBool("atk", false);
         }
 
         if (isOnBoat && Input.GetButtonDown("Jump"))
@@ -321,6 +331,7 @@ public class zKaiController : MonoBehaviour
                     Moving.y = 0;
                 }
                 inWall = true;
+                wallJumpEffect.SetActive(true);
                 inAir = false;
                 gravity = 1.8f;
             }
@@ -328,6 +339,7 @@ public class zKaiController : MonoBehaviour
         else
         {
             inWall = false;
+            wallJumpEffect.SetActive(false);
             Anim.SetBool("wall", false);
             gravity = 9.8f;
         }
