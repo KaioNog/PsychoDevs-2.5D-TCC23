@@ -6,7 +6,8 @@ public class HealthCollectible : MonoBehaviour
 {
     [SerializeField]private float healthValue;
     private float velocityRotation = 110;
-
+    public GameObject healthEffect;
+   
     void Update()
     {
         transform.Rotate(0, velocityRotation * Time.deltaTime, 0);
@@ -18,6 +19,8 @@ public class HealthCollectible : MonoBehaviour
         {
             collision.GetComponent<Health>().AddHealth(healthValue);
             gameObject.SetActive(false);
+            Instantiate(healthEffect, transform.position, transform.rotation);
+            FindObjectOfType<AudioManager>().Play("Health"); 
         }
     }
 }

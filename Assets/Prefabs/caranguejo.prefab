@@ -2294,7 +2294,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1345674599350439566}
   - component: {fileID: 1895254975006452555}
-  - component: {fileID: 5479293267366073283}
   - component: {fileID: 5031909181684367935}
   - component: {fileID: 767854166841079959}
   - component: {fileID: 548880151759256161}
@@ -2346,19 +2345,6 @@ CapsuleCollider:
   m_Height: 6.9940977
   m_Direction: 1
   m_Center: {x: 0.20101142, y: 1.8028713, z: 0.31550062}
---- !u!114 &5479293267366073283
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8015597421869694687}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd7be530f862aaa42928a65163664d96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lookRadius: 3
 --- !u!114 &5031909181684367935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2387,7 +2373,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 2
-  explosionEffect: {fileID: 2363371023494847463, guid: 7bc5132f5e4e53a42badf13b6928e5ec, type: 3}
+  dieEffect: {fileID: 0}
 --- !u!95 &548880151759256161
 Animator:
   serializedVersion: 5

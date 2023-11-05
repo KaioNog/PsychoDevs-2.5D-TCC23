@@ -40,7 +40,7 @@ public class ProjectileSpawn : MonoBehaviour
             timeToFire = Time.time + 1 / effectToSpawn.GetComponent<ProjectileMove>().fireRate;
             StartCoroutine(SpawnVFX());
 
-            Debug.Log("Shoot efetuado");
+            //Debug.Log("Shoot efetuado");
             playerData.playerDataInstance.subtractScore(m:10);
         }    
     }
@@ -63,10 +63,10 @@ public class ProjectileSpawn : MonoBehaviour
 
             hairColorChanger.ResetHairColor();
         }
-        else
+        /*else
         {
             Debug.Log("No Fire Point");
-        }
+        }*/
         
     }
 }

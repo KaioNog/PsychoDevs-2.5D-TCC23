@@ -8,10 +8,12 @@ public class enemyPlanta : Interactable
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject planta;
     public GameObject explosionEffect; 
+    public GameObject fogEffect; 
+    public GameObject Wall; 
+    public GameObject hurtEnemyEffect;
 
     public int maxHealth = 5;
     public int currentHealth { get; private set; }
-    private Animator anim;
     private bool dead;
 
     private float attackInterval = 1.8f;
@@ -25,7 +27,6 @@ public class enemyPlanta : Interactable
     private void Awake()
     {
         currentHealth = maxHealth;
-        anim = GetComponent<Animator>();
         plantaAnimator = GetComponentInParent<Animator>();
         cameraZoom = Camera.main.GetComponent<CameraZoom>();
     }
@@ -47,28 +48,22 @@ public class enemyPlanta : Interactable
             {
                 attackTimer = 0f;
                 AttackPlayer();
-            }
-            /*else
-            {
-                Anim.SetBool("atk", false);           
-
-            }*/              
+            }           
         }
     }
-
 
     public void AttackPlayer()
     {
         if (PlayerInRange())
         {
-
+            Destroy(fogEffect);
             GameObject attackInstance = Instantiate(attackPrefab, transform.position, Quaternion.identity);
             enemyPlantaAtk attackComponent = attackInstance.GetComponent<enemyPlantaAtk>();
 
             attackComponent.SetAttackDirection(player.transform);
 
+            plantaAnimator.SetBool("atk",true);
             Destroy(attackInstance, attackLifetime);
-
         }
     }
 
@@ -111,10 +106,10 @@ public class enemyPlanta : Interactable
     public void TakeDamage(int damage)
     {
         damage = Mathf.Clamp(damage, 0, int.MaxValue);
-
         currentHealth -= damage;
-        Debug.Log(transform.name + "takes" + damage + "damage");
-        
+        Instantiate(hurtEnemyEffect, transform.position, transform.rotation);
+        FindObjectOfType<AudioManager>().Play("HurtEnemy"); 
+
         if(currentHealth < 0)
         {
             Die();
@@ -127,6 +122,7 @@ public class enemyPlanta : Interactable
         Debug.Log(transform.name + "died.");
         Destroy(gameObject); 
         Destroy(planta); 
+        Destroy(Wall); 
         Instantiate(explosionEffect, transform.position, transform.rotation);
         cameraZoom.DeactivateZoom();
     }
@@ -138,20 +134,5 @@ public class enemyPlanta : Interactable
 
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(interactionTransform.position, playerAttackRadius);
-    }
-
-        public void StartAttack()
-    {
-        GameObject attackInstance = Instantiate(attackPrefab, transform.position, Quaternion.identity);
-        enemyPlantaAtk attackComponent = attackInstance.GetComponent<enemyPlantaAtk>();
-
-        attackComponent.SetAttackDirection(player.transform);
-
-        Destroy(attackInstance, attackLifetime);
-    }
-
-    public void StartAttackEvent()
-    {
-        StartAttack();
     }
 }

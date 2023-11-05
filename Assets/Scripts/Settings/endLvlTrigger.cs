@@ -7,6 +7,7 @@ public class endLvlTrigger : MonoBehaviour
     public GameManager gameManager;
     public GameObject nextLevelButton;
     public bool CanNextLvl;
+    public GameObject endEffect;
 
     private GameObject currentButtonNL; //NL = Next Level
 
@@ -35,12 +36,13 @@ public class endLvlTrigger : MonoBehaviour
     void OnTriggerEnter()
     {
         gameManager.CompleteLevel();
+        Instantiate(endEffect, transform.position, transform.rotation);
         CanNextLvl = true;
             // Parar a música da fase
             FindObjectOfType<AudioManager>().Stop("TrilhaSonora");
             
             // Iniciar a música de vitória
-            FindObjectOfType<AudioManager>().Play("Win");       
+            FindObjectOfType<AudioManager>().Play("Win");            
     }
 
     public void LoadNextLevel()

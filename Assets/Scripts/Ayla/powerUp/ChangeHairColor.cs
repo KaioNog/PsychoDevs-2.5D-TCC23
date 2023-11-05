@@ -9,6 +9,7 @@ public class ChangeHairColor : MonoBehaviour
     public Material yellowHairMaterial;
     public Material blueHairMaterial;
     public Material pinkHairMaterial;
+    public Material redHairMaterial;
 
     private void Start()
     {
@@ -28,6 +29,12 @@ public class ChangeHairColor : MonoBehaviour
     public void ChangeHairToPink()
     {
         hairRenderer.material = pinkHairMaterial;
+    }
+
+    public void ChangeHairToRed()
+    {
+        hairRenderer.material = redHairMaterial;
+        defaultHairMaterial = redHairMaterial;
     }
 
     public void ResetHairColor()

@@ -39,10 +39,10 @@ public class Enemy : Interactable
                 attackTimer = 0f;
                 AttackPlayer();
             }  
-            else
+            /*else
             {
                 Anim.SetBool("atk", false);
-            }         
+            }*/       
         }
     }
 
@@ -51,7 +51,7 @@ public class Enemy : Interactable
     {
         if (PlayerInRange())
         {
-            //Anim.SetBool("atk", true);
+            Anim.SetTrigger("atk");
             Health playerHealth = FindObjectOfType<Health>();
             playerHealth.TakeDamage(damage);
         }
@@ -84,9 +84,20 @@ public class Enemy : Interactable
             collision.GetComponent<Health>().TakeDamage(damage);
         }
 
+        /*if(collision.gameObject.CompareTag("Shoot"))
+        {
+            stats.TakeDamage(10);
+            Debug.Log("Dano Shoot");
+        }*/
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
         if(collision.gameObject.CompareTag("Shoot"))
         {
-            stats.TakeDamage(1);
+            stats.TakeDamage(5);
+            Debug.Log("Dano Shoot");
         }
     }
+
 }

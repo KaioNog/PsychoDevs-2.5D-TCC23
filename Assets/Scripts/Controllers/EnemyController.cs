@@ -33,11 +33,13 @@ public class EnemyController : MonoBehaviour
             else
             {
             Anim.SetBool("walk", true);
+            Anim.SetBool("idle", false);
             }
         }
         else
         {
             Anim.SetBool("walk", false);
+            Anim.SetBool("idle", true);
 
         }
     }

@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class flyingFishAtk : Interactable
-
 {
     [SerializeField] private GameObject attackPrefab;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject fish;
 
     public GameObject explosionEffect; 
-    
+    public GameObject hurtEnemyEffect;
+
     public int maxHealth = 3;
     public int currentHealth { get; private set; }
     private Animator anim;
@@ -99,10 +99,10 @@ public class flyingFishAtk : Interactable
     public void TakeDamage(int damage)
     {
         damage = Mathf.Clamp(damage, 0, int.MaxValue);
-
         currentHealth -= damage;
-        //Debug.Log(transform.name + "takes" + damage + "damage");
-        
+        Instantiate(hurtEnemyEffect, transform.position, transform.rotation);
+        FindObjectOfType<AudioManager>().Play("HurtEnemy"); 
+
         if(currentHealth < 0)
         {
             Die();

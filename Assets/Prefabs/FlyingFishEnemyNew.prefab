@@ -568,7 +568,7 @@ MonoBehaviour:
   attackPrefab: {fileID: 3982363666225803993, guid: dd672f3dca3930b4bb7672dc60e8ecf4, type: 3}
   player: {fileID: 0}
   fish: {fileID: 3805762293934626202}
-  explosionEffect: {fileID: 2363371023494847463, guid: 7bc5132f5e4e53a42badf13b6928e5ec, type: 3}
+  explosionEffect: {fileID: 100004, guid: 5cd4c94945ced5342b2c3711a35aa634, type: 3}
   maxHealth: 2
   attackSpeed: 2
   playerAttackRadius: 2

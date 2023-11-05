@@ -10,7 +10,7 @@ public class playerData : MonoBehaviour
     public static playerData playerDataInstance;
     public TextMeshProUGUI scoreMana;
     public int numberScoreMana = 0;
-
+    
     private void Awake()
     {
         if(playerDataInstance == null)

@@ -11,6 +11,8 @@ TagManager:
   - ToxicWater
   - Boat
   - Teleporte
+  - RedHair
+  - AyrusAtk
   layers:
   - Default
   - TransparentFX

@@ -11,7 +11,8 @@ public class enemyStats : MonoBehaviour
     private bool dead;
 
     private enemyCogu coguExplosion;
-    public GameObject explosionEffect;
+    public GameObject dieEffect;
+    public GameObject hurtEnemyEffect;
 
     public void Awake()
     {
@@ -22,10 +23,12 @@ public class enemyStats : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        //anim.SetTrigger("hurt");
+        Instantiate(hurtEnemyEffect, transform.position, transform.rotation);
         damage = Mathf.Clamp(damage, 0, int.MaxValue);
-
         currentHealth -= damage;
-        
+        FindObjectOfType<AudioManager>().Play("HurtEnemy"); 
+      
         if(currentHealth < 0)
         {
             Die();
@@ -36,7 +39,7 @@ public class enemyStats : MonoBehaviour
     {
         //anim.SetTrigger("die");
         Destroy(gameObject); 
-        Instantiate(explosionEffect, transform.position, transform.rotation);
+        Instantiate(dieEffect, transform.position, transform.rotation);
         //coguExplosion.DieExplosion();
     }
 }

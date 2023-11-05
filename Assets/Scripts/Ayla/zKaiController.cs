@@ -5,7 +5,7 @@ using UnityEngine;
 public class zKaiController : MonoBehaviour
 {
     private Animator Anim;
-    private float velocity = 3.5f;
+    private float velocity = 4.5f;
     private float inputHorizontal;
     private Quaternion playerRotation;
     private Vector3 Moving;
@@ -16,7 +16,7 @@ public class zKaiController : MonoBehaviour
     private float trampolineForce = 9f;
     private bool inAir = false;
     private bool doubleJump = false;
-    private float velocityDash = 6f;
+    private float velocityDash = 7f;
     private float durationDash = 0.20f;
     private bool activeDash = false;
     public bool canDash = false;
@@ -46,14 +46,15 @@ public class zKaiController : MonoBehaviour
     public GameObject ShieldEffect;
     public GameObject DashEffect;
     public ChangeHairColor hairColorChanger;
+    public GameObject RedHairEffect;
 
     private Transform barcoTransform; // Referência ao transform do barco
     private Vector3 offset; // Offset entre o jogador e o barco
     private bool isOnBoat; // Flag para verificar se o jogador está no barco
 
-    private int attackCount = 0;
+    /*private int attackCount = 0;
     private bool isSpecialAttack = false;
-    private int attacksForSpecial = 5;
+    private int attacksForSpecial = 5;*/
 
     private void Start()
     {
@@ -62,7 +63,7 @@ public class zKaiController : MonoBehaviour
         Application.targetFrameRate = 60;
         cam = Camera.main;
         hairColorChanger = GetComponent<ChangeHairColor>();
-        FindObjectOfType<AudioManager>().Play("TrilhaSonora");       
+        FindObjectOfType<AudioManager>().Play("TrilhaSonora");      
     }
 
     private void Update()
@@ -101,10 +102,10 @@ public class zKaiController : MonoBehaviour
         {
             Anim.SetBool("atk", true);
         } 
-        else 
-        {
-            Anim.SetBool("atk", false);
-        }
+            else 
+            {
+                Anim.SetBool("atk", false);
+            }
 
         if (isOnBoat && Input.GetButtonDown("Jump"))
         {
@@ -355,6 +356,13 @@ public class zKaiController : MonoBehaviour
             offset = transform.position - barcoTransform.position;
             isOnBoat = true;
         }
+
+        if (other.CompareTag("RedHair"))
+        {
+            hairColorChanger.ChangeHairToRed();
+            Instantiate(RedHairEffect, transform.position, transform.rotation);
+        }                   
+
     }
 
     // Método chamado quando o jogador sai do trigger do barco

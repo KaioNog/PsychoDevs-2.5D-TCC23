@@ -7,6 +7,7 @@ public class Health : MonoBehaviour
     private Animator anim;
     private bool dead;
     public GameObject HurtEffect;
+    public GameObject dieEffect;
 
     public bool CanDamage;
 
@@ -43,9 +44,9 @@ public class Health : MonoBehaviour
         {
             if(!dead)
             {
-            Debug.Log("Game over");
-            dead = true;
             anim.SetTrigger("die");
+            dead = true;
+            Instantiate(dieEffect, transform.position, transform.rotation);
             GetComponent<zKaiController>().enabled = false;
             GameManager.instance.ShowGameOver();
                     // Para a música da fase
