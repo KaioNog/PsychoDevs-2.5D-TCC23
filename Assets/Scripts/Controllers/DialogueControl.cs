@@ -14,6 +14,7 @@ public class DialogueControl : MonoBehaviour
 
     [Header("Settings")]
     public float typingSpeed;
+    public float displayDuration;
     private string[] sentences;
     private int index;
 
@@ -24,6 +25,8 @@ public class DialogueControl : MonoBehaviour
         sentences = txt;
         actorNameText.text = actorName;
         StartCoroutine(TypeSentence());
+
+        StartCoroutine(HideAfterDuration());
     }
 
     IEnumerator TypeSentence()
@@ -35,22 +38,16 @@ public class DialogueControl : MonoBehaviour
         }
     }
 
-    public void NextSentence()
+    IEnumerator HideAfterDuration()
     {
-        if(speechText.text == sentences[index])
-        {
-            if(index < sentences.Length - 1)
-            {
-                index++;
-                speechText.text = "";
-                StartCoroutine(TypeSentence());
-            }
-            else
-            {
-                speechText.text = "";
-                index = 0;
-                dialogueObj.SetActive(false);
-            }
-        }
+        yield return new WaitForSeconds(displayDuration);
+        HideDialogue();
+    }
+
+    void HideDialogue()
+    {
+        // Reiniciar os elementos do diálogo para a próxima vez que for exibido
+        speechText.text = "";
+        dialogueObj.SetActive(false);
     }
 }

@@ -52,6 +52,9 @@ public class zKaiController : MonoBehaviour
     private Vector3 offset; // Offset entre o jogador e o barco
     private bool isOnBoat; // Flag para verificar se o jogador está no barco
 
+    DialogueSystem dialogueSystem;
+    public Transform npc;
+
     /*private int attackCount = 0;
     private bool isSpecialAttack = false;
     private int attacksForSpecial = 5;*/
@@ -63,12 +66,23 @@ public class zKaiController : MonoBehaviour
         Application.targetFrameRate = 60;
         cam = Camera.main;
         hairColorChanger = GetComponent<ChangeHairColor>();
+        dialogueSystem = FindObjectOfType<DialogueSystem>();
         FindObjectOfType<AudioManager>().Play("TrilhaSonora");      
     }
 
     private void Update()
     {
         Move();
+
+
+            if(Input.GetKeyDown(KeyCode.E))
+            {
+                if (IsPlayerNearNPC()) // Verifica se o jogador está perto do NPC
+                {
+                Debug.Log("Pressionou E");
+                dialogueSystem.Next();
+                }
+            }
 
         /*if (Input.GetKeyDown(KeyCode.K) && !isSpecialAttack)  
         {
@@ -116,6 +130,7 @@ public class zKaiController : MonoBehaviour
             Vector3 newPosition = barcoTransform.position + offset;
             transform.position = newPosition;
         }
+
     }
 
     void Move()
@@ -226,6 +241,18 @@ public class zKaiController : MonoBehaviour
         controller.Move(Moving*Time.deltaTime);
     }
 
+        private bool IsPlayerNearNPC()
+        {
+        if (npc == null)
+        {
+            return false;
+        }
+
+        float distance = Vector3.Distance(transform.position, npc.position);
+
+        return distance < interactionRadius;
+        }
+        
     IEnumerator Dash()
     {
             float initialTime = Time.time;

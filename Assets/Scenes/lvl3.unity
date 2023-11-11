@@ -5294,7 +5294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cef88adac6beb214587f04fe741c7b83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyRadius: 5.5
+  enemyRadius: 6
   interactionTransform: {fileID: 1169612493}
   attackPrefab: {fileID: 8683640470350748328, guid: 4654e7c5c82c04246835e5b61a6b166d, type: 3}
   player: {fileID: 6704562434069559984}
@@ -113763,7 +113763,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aac4ecb41a1ddb40a697b7f287b1a42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 15
+  maxHealth: 35
   dieEffect: {fileID: 5642766282230003982, guid: dc31553147ed0b440a211b7c6115f1e1, type: 3}
   hurtEnemyEffect: {fileID: 5954729838386997156, guid: fd859e72b577b1b46a5e18cd0adece4c, type: 3}
 --- !u!54 &7981210589080950973
