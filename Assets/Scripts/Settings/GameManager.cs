@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public GameObject gameOver;
     public GameObject completeLvlUI;
+    public GameObject dialogoMultiObj;
 
     void Start()
     {
@@ -16,6 +17,7 @@ public class GameManager : MonoBehaviour
     public void ShowGameOver()
     {
         gameOver.SetActive(true);
+        dialogoMultiObj.SetActive(false);
     }
 
     public void CompleteLevel()

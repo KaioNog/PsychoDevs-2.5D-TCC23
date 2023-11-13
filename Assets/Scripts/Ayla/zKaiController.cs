@@ -55,9 +55,9 @@ public class zKaiController : MonoBehaviour
     DialogueSystem dialogueSystem;
     public Transform npc;
 
-    /*private int attackCount = 0;
+    private int attackCount = 0;
     private bool isSpecialAttack = false;
-    private int attacksForSpecial = 5;*/
+    private int attacksForSpecial = 5;
 
     private void Start()
     {
@@ -84,7 +84,7 @@ public class zKaiController : MonoBehaviour
                 }
             }
 
-        /*if (Input.GetKeyDown(KeyCode.K) && !isSpecialAttack)  
+        if (Input.GetKeyDown(KeyCode.K) && !isSpecialAttack)  
         {
             if (attackCount < attacksForSpecial) 
             {
@@ -110,9 +110,9 @@ public class zKaiController : MonoBehaviour
             isSpecialAttack = false;
             Anim.SetBool("specialAttack", false);
             Anim.SetBool("atk", true);
-        }*/
+        }
 
-        if (Input.GetKeyDown(KeyCode.K))  
+        /*if (Input.GetKeyDown(KeyCode.K))  
         {
             Anim.SetBool("atk", true);
         } 
@@ -120,7 +120,7 @@ public class zKaiController : MonoBehaviour
             {
                 Anim.SetBool("atk", false);
             }
-
+        */
         if (isOnBoat && Input.GetButtonDown("Jump"))
         {
             JumpFromBoat();
