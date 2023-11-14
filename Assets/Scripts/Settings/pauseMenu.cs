@@ -12,6 +12,7 @@ public class pauseMenu : MonoBehaviour
     public GameObject resumeButtonPM; //PM = Pause Menu
     public GameObject menuButtonPM;
     public GameObject quitButtonPM;
+    public GameObject dialogoMultiObj;
 
     private GameObject currentButtonPM;
 
@@ -73,6 +74,8 @@ public class pauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
+        dialogoMultiObj.SetActive(true);
+
     }
 
     void Pause()
@@ -80,6 +83,8 @@ public class pauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
+        dialogoMultiObj.SetActive(false);
+
     }
 
     public void LoadMenu()

@@ -23,5 +23,7 @@ public class GameManager : MonoBehaviour
     public void CompleteLevel()
     {
         completeLvlUI.SetActive(true);
+                dialogoMultiObj.SetActive(false);
+
     }
 }

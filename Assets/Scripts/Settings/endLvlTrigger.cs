@@ -10,12 +10,14 @@ public class endLvlTrigger : MonoBehaviour
     public GameObject endEffect;
 
     private GameObject currentButtonNL; //NL = Next Level
+    public GameObject dialogoMultiObj;
 
     void Start()
     {
         CanNextLvl = false;
         currentButtonNL = nextLevelButton;
         currentButtonNL.GetComponent<Button>().Select();
+                    dialogoMultiObj.SetActive(true);      
     }
 
     void Update()
@@ -42,7 +44,8 @@ public class endLvlTrigger : MonoBehaviour
             FindObjectOfType<AudioManager>().Stop("TrilhaSonora");
             
             // Iniciar a música de vitória
-            FindObjectOfType<AudioManager>().Play("Win");            
+            FindObjectOfType<AudioManager>().Play("Win");      
+            dialogoMultiObj.SetActive(false);      
     }
 
     public void LoadNextLevel()
