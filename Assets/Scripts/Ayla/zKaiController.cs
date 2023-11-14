@@ -89,11 +89,14 @@ public class zKaiController : MonoBehaviour
             if (attackCount < attacksForSpecial) 
             {
                 Anim.SetBool("atk", true);
+                Debug.Log("atk normal");
                 attackCount++;
             } 
             else
             {
                 isSpecialAttack = true;
+                                Debug.Log("atk especial");
+
                 Anim.SetBool("atk", false);
                 Anim.SetBool("specialAttack", true);
             }

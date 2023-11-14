@@ -22,12 +22,12 @@ public class playerData : MonoBehaviour
     public void AddScore(int m)
     {
         numberScoreMana += m;
-        scoreMana.text = "Mana:  " + numberScoreMana;
+        scoreMana.text = "" + numberScoreMana;
     }
 
     public void subtractScore(int m)
      {
         numberScoreMana -= m;
-        scoreMana.text = "Mana:  " + numberScoreMana;
+        scoreMana.text = "" + numberScoreMana;
     }   
 }
