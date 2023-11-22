@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Teleporte : MonoBehaviour
 {
-    public float DistanciaTeleporte = 20f;
+    public Transform destinoTeleporte;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            other.transform.Translate(Vector3.forward * DistanciaTeleporte);
+            other.transform.position = destinoTeleporte.position;
         }
     }
 }
