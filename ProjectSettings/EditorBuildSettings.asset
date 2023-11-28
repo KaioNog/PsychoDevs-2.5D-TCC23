@@ -8,9 +8,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Test.unity
     guid: 0552f7994decbf648b25f4b557dec7c5
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Menu.unity
     guid: b050d752b8ef4e44899142741d231cee
+  - enabled: 1
+    path: Assets/Scenes/MenuNovo.unity
+    guid: ec852af59158efd4bbb2ee9cd8129c16
   - enabled: 1
     path: Assets/Scenes/lvl1.unity
     guid: c1e5f52afe0e8de41b1bed02f5292ea3

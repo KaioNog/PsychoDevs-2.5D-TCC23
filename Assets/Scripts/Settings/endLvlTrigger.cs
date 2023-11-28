@@ -51,5 +51,6 @@ public class endLvlTrigger : MonoBehaviour
     public void LoadNextLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        dialogoMultiObj.SetActive(false);      
     }
 }
