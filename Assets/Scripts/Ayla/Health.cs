@@ -49,11 +49,11 @@ public class Health : MonoBehaviour
             Instantiate(dieEffect, transform.position, transform.rotation);
             GetComponent<zKaiController>().enabled = false;
             GameManager.instance.ShowGameOver();
-                    // Para a música da fase
-        FindObjectOfType<AudioManager>().Stop("TrilhaSonora");
 
-        // Inicia a música de Game Over
-        FindObjectOfType<AudioManager>().Play("GameOver");  
+            // Para a música da fase
+            FindObjectOfType<AudioManager>().Stop("TrilhaSonora");
+            // Inicia a música de Game Over
+            FindObjectOfType<AudioManager>().Play("GameOver");  
             }
         }
     }

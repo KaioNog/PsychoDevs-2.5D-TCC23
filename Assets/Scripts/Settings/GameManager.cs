@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public GameObject completeLvlUI;
     public GameObject dialogoMultiObj;
 
-    void Start()
+    void Awake()
     {
         instance = this;
     }
@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     public void CompleteLevel()
     {
         completeLvlUI.SetActive(true);
-                dialogoMultiObj.SetActive(false);
+        dialogoMultiObj.SetActive(false);
 
     }
 }

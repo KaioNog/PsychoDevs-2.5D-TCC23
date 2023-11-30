@@ -9,6 +9,7 @@ public class TentacleController : Interactable
     public int damage = 1;
     public float attackCooldown = 2f;
     private bool isAttacking = false;
+    public bool canDamage = false;
     public GameObject tentacleColliderObject;
 
     private void Awake()
@@ -18,50 +19,22 @@ public class TentacleController : Interactable
 
     private void Update()
     {
-        if (!isAttacking)
+        if (PlayerInRange() && !isAttacking)
         {
             StartCoroutine(AttackCoroutine());
+            Debug.Log("Chamar ataque");
         }
 
-        if ((Input.GetKeyUp(KeyCode.K)) && PlayerInRange())
+        /*if(CheckCollisionWithPlayer())
         {
-            stats.TakeDamage(1); //player -> enemy
-        }
+            //canDamage = true;
+        }*/
     }
 
-  
-    IEnumerator AttackCoroutine()
+    public override void Interact()
     {
-        isAttacking = true;
-        GetComponent<Animator>().SetTrigger("atk");
-        yield return new WaitForSeconds(0.5f);
-
-        if (CheckCollisionWithPlayer())
-        {
-            // Causa dano ao jogador
-            Health playerHealth = FindObjectOfType<Health>();
-            playerHealth.TakeDamage(damage);
-            Debug.Log("Bateu no player");
-        }
-        yield return new WaitForSeconds(attackCooldown);
-        isAttacking = false;
-    }
-
-    private bool CheckCollisionWithPlayer() //colisao com player
-    {
-        CapsuleCollider tentacleCollider = tentacleColliderObject.GetComponent<CapsuleCollider>();
-        Collider[] hitColliders = Physics.OverlapCapsule(tentacleCollider.center, tentacleCollider.bounds.center, tentacleCollider.radius);
-
-        foreach (Collider col in hitColliders)
-        {
-            if (col.CompareTag("Player"))
-            {
-                return true;
-            }
-        }
-
-        return false;
-    }
+        base.Interact();
+    }  
 
     private bool PlayerInRange() //player no raio, ataque iniciar
     {
@@ -74,12 +47,39 @@ public class TentacleController : Interactable
                 return true;
             }
         }
-
         return false;
     }
-
-    public override void Interact()
+    
+    IEnumerator AttackCoroutine() //ataca
     {
-        base.Interact();
+        isAttacking = true;
+        GetComponent<Animator>().SetTrigger("atk");
+        yield return new WaitForSeconds(0.5f);
+        
+        if (canDamage) //troquei pelo script direto no colider que acompanha a animação
+        {
+            // Causa dano ao jogador
+            Health playerHealth = FindObjectOfType<Health>();
+            playerHealth.TakeDamage(damage);
+            Debug.Log("Bateu no player");
+        }
+
+        yield return new WaitForSeconds(attackCooldown);
+        isAttacking = false;
     }
+
+    /*private bool CheckCollisionWithPlayer() //colisao com player
+    {
+        CapsuleCollider tentacleCollider = tentacleColliderObject.GetComponent<CapsuleCollider>();
+        Collider[] hitColliders = Physics.OverlapCapsule(tentacleCollider.center, tentacleCollider.bounds.center, tentacleCollider.radius);
+
+        foreach (Collider col in hitColliders)
+        {
+            if (col.CompareTag("Player"))
+            {
+                return true;
+            }
+        }
+        return false;
+    }*/
 }

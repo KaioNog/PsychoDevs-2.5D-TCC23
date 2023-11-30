@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class zKaiController : MonoBehaviour
 {
@@ -58,16 +59,19 @@ public class zKaiController : MonoBehaviour
     /*private int attackCount = 0;
     private bool isSpecialAttack = false;
     private int attacksForSpecial = 5;*/
+    private Vector3 respawnPosition;
 
     private void Start()
     {
+        Respawn();
         Anim = this.GetComponent<Animator>();
         controller = this.GetComponent<CharacterController>();
         Application.targetFrameRate = 60;
         cam = Camera.main;
         hairColorChanger = GetComponent<ChangeHairColor>();
         dialogueSystem = FindObjectOfType<DialogueSystem>();
-        FindObjectOfType<AudioManager>().Play("TrilhaSonora");      
+        FindObjectOfType<AudioManager>().Play("TrilhaSonora");     
+        respawnPosition = transform.position;
     }
 
     private void Update()
@@ -362,7 +366,7 @@ public class zKaiController : MonoBehaviour
                     Moving.y = 0;
                 }
                 inWall = true;
-                wallJumpEffect.SetActive(true);
+                Instantiate(wallJumpEffect, transform.position, transform.rotation);
                 inAir = false;
                 gravity = 1.8f;
             }
@@ -370,7 +374,7 @@ public class zKaiController : MonoBehaviour
         else
         {
             inWall = false;
-            wallJumpEffect.SetActive(false);
+            //wallJumpEffect.SetActive(false);
             Anim.SetBool("wall", false);
             gravity = 9.8f;
         }
@@ -391,11 +395,14 @@ public class zKaiController : MonoBehaviour
         {
             hairColorChanger.ChangeHairToRed();
             Instantiate(RedHairEffect, transform.position, transform.rotation);
-        }                   
+        }     
 
+        if (other.CompareTag("Checkpoint"))
+        {
+            respawnPosition = other.transform.position;
+        }
     }
 
-    // Método chamado quando o jogador sai do trigger do barco
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Boat"))
@@ -406,7 +413,10 @@ public class zKaiController : MonoBehaviour
         }
     }
 
-    // Método para fazer o jogador pular para fora do barco
+    private void Respawn()
+    {
+        transform.position = respawnPosition;
+    }
     public void JumpFromBoat()
     {
         Debug.Log("Saltou do barco");
