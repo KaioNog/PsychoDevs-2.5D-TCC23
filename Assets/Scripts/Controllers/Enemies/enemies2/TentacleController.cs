@@ -24,6 +24,10 @@ public class TentacleController : Interactable
             StartCoroutine(AttackCoroutine());
             Debug.Log("Chamar ataque");
         }
+        else
+        {
+            isAttacking = false;
+        }
 
         /*if(CheckCollisionWithPlayer())
         {

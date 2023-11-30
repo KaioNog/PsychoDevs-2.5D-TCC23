@@ -1693,8 +1693,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5467966102029566518}
-  - {fileID: 372029295}
   - {fileID: 306060564}
   m_Father: {fileID: 71561758}
   m_RootOrder: 25
@@ -2862,6 +2860,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 2
   enemyRadiusDamage: 22
+  Kraken: {fileID: 0}
 --- !u!136 &161776566
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6014,8 +6013,10 @@ Transform:
   - {fileID: 689421580}
   - {fileID: 1115236523}
   - {fileID: 994970940}
+  - {fileID: 5467966102029566518}
+  - {fileID: 372029295}
   m_Father: {fileID: 110913290}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &306060565
 MonoBehaviour:
@@ -7036,16 +7037,16 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 372029294}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -18.12, y: 0, z: -26.8}
-  m_LocalScale: {x: 11.986983, y: 11.986983, z: 11.986983}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -2.7529852}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 594594556}
   - {fileID: 798487673}
   - {fileID: 161776563}
-  m_Father: {fileID: 110913290}
-  m_RootOrder: 1
+  m_Father: {fileID: 306060564}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &372029296
 MonoBehaviour:
@@ -19470,6 +19471,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 2
   enemyRadiusDamage: 22
+  Kraken: {fileID: 110913289}
 --- !u!136 &994970942
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -45834,16 +45836,16 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4659482474368850060}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -19.1, y: -7.7, z: -9.4}
-  m_LocalScale: {x: 0.6418814, y: 0.6418814, z: 0.6418814}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: -0.08175531, y: -0.6423634, z: -1.3014137}
+  m_LocalScale: {x: 0.053548202, y: 0.053548202, z: 0.053548202}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8496054247212939727}
   - {fileID: 3980319200616637206}
   - {fileID: 3242211212618751857}
-  m_Father: {fileID: 110913290}
-  m_RootOrder: 0
+  m_Father: {fileID: 306060564}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!95 &5467966102029566519
 Animator:

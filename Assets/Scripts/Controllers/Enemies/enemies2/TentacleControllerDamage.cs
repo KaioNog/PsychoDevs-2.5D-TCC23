@@ -7,6 +7,7 @@ public class TentacleControllerDamage : MonoBehaviour
    [SerializeField] private float damage;
     private enemyStats stats;
     public float enemyRadiusDamage = 3f;
+    public GameObject Kraken;
 
     private void Awake()
     {
