@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class enemyStats : MonoBehaviour
 {
-    //public Stat damage;
     public int maxHealth = 5;
     public int currentHealth { get; private set; }
     private Animator anim;
     private bool dead;
 
-    private enemyCogu coguExplosion;
     public GameObject dieEffect;
     public GameObject hurtEnemyEffect;
 
@@ -18,12 +16,10 @@ public class enemyStats : MonoBehaviour
     {
         currentHealth = maxHealth;
         anim = GetComponent<Animator>();
-        coguExplosion = GetComponent<enemyCogu>();
     }
 
     public void TakeDamage(int damage)
     {
-        //anim.SetTrigger("hurt");
         Instantiate(hurtEnemyEffect, transform.position, transform.rotation);
         damage = Mathf.Clamp(damage, 0, int.MaxValue);
         currentHealth -= damage;
@@ -37,9 +33,7 @@ public class enemyStats : MonoBehaviour
  
     public virtual void Die()
     {
-        //anim.SetTrigger("die");
         Destroy(gameObject); 
         Instantiate(dieEffect, transform.position, transform.rotation);
-        //coguExplosion.DieExplosion();
     }
 }

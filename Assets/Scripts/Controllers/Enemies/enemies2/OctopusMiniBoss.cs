@@ -11,10 +11,9 @@ public class OctopusMiniBoss : Interactable
     private float attackInterval = 2f; // Intervalo de tempo entre os ataques
     private float attackTimer;
 
-    [SerializeField] private float EspecialDamage;
-
-    private float EspecialAttackInterval = 6f; // Intervalo de tempo entre os ataques
-    private float EspecialAttackTimer;
+    //[SerializeField] private float EspecialDamage;
+   // private float EspecialAttackInterval = 6f; // Intervalo de tempo entre os ataques
+    //private float EspecialAttackTimer;
 
     private void Awake()
     {
@@ -32,6 +31,7 @@ public class OctopusMiniBoss : Interactable
         //enemy atk
         if (PlayerInRange())
         {
+            //if collision player
             attackTimer += Time.deltaTime;
 
             if (attackTimer >= attackInterval)
@@ -45,9 +45,10 @@ public class OctopusMiniBoss : Interactable
                 Anim.SetBool("atk", false);
             }         
         }
-        //enemy especial atk
+        /*enemy especial atk
         if (PlayerInRange())
         {
+            //if collision  player{}
             EspecialAttackTimer += Time.deltaTime;
 
             if (EspecialAttackTimer >= EspecialAttackInterval)
@@ -56,11 +57,11 @@ public class OctopusMiniBoss : Interactable
                 AttackPlayer();
                 Debug.Log("atk especial");
             }  
-            else
+            /*else
             {
                 Anim.SetBool("atk2", false);
             }         
-        }
+        }*/
     }
 
     private void AttackPlayer()
@@ -73,7 +74,7 @@ public class OctopusMiniBoss : Interactable
         }
     }
 
-    private void AttackEspecialPlayer()
+    /*private void AttackEspecialPlayer()
     {
         if (PlayerInRange())
         {
@@ -81,7 +82,7 @@ public class OctopusMiniBoss : Interactable
             Health playerHealth = FindObjectOfType<Health>();
             playerHealth.TakeDamage(EspecialDamage);
         }
-    }
+    }*/
 
     public override void Interact()
     {
@@ -111,3 +112,5 @@ public class OctopusMiniBoss : Interactable
         }
     }
 }
+
+
