@@ -56,4 +56,19 @@ public class menuManager : MonoBehaviour
         opts.SetActive(true);
         controls.SetActive(false);
     }
+
+        public void Go1()
+    {
+        SceneManager.LoadScene("lvl1");
+    }
+
+    public void Go2()
+    {
+        SceneManager.LoadScene("lvl2");
+    }
+
+    public void Go3()
+    {
+        SceneManager.LoadScene("lvl3");
+    }
 }

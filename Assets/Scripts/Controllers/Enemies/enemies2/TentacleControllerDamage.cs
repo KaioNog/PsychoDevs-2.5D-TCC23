@@ -7,25 +7,24 @@ public class TentacleControllerDamage : MonoBehaviour
    [SerializeField] private float damage;
     private enemyStats stats;
     public float enemyRadiusDamage = 3f;
-    public GameObject Kraken;
+    public bool collisionDetected = false;
+    public bool canDamage = false;
 
     private void Awake()
     {
-        stats = GetComponentInParent<enemyStats>(); // script de vida do inimigo
+        stats = GetComponentInParent<enemyStats>();
     }
 
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.K))
+        /*if (Input.GetKeyUp(KeyCode.K))
         {
-            // Verifica se o jogador está dentro da distância de ataque
-            float distance = Vector3.Distance(transform.position, FindObjectOfType<zKaiController>().transform.position);
-            if (distance < enemyRadiusDamage)
+            if (canDamage)
             {
-                // Causa dano ao tentáculo
+                Debug.Log("Dano no octoppus");
                 stats.TakeDamage(1);
             }
-        }
+        }*/
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -33,6 +32,7 @@ public class TentacleControllerDamage : MonoBehaviour
         if(collision.tag == "Player")
         {
             collision.GetComponent<Health>().TakeDamage(damage);
+            Debug.Log("Dano no player");
         }
     }
 }
