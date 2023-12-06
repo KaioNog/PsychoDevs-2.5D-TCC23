@@ -22,10 +22,16 @@ public class flyingFishAtk : Interactable
     private float attackLifetime = 5f;
     public float playerAttackRadius = 5f;
 
+    public SkinnedMeshRenderer fishRenderer; // Use SkinnedMeshRenderer para personagens com animações complexas
+    public Material defaultFishMaterial;
+    public Material redFishMaterial;
+    private float durationHurt = 0.2f;
+
     private void Awake()
     {
         currentHealth = maxHealth;
         anim = GetComponent<Animator>();
+        fishRenderer = GetComponentInParent<SkinnedMeshRenderer>();
     }
 
     public void Update()
@@ -34,6 +40,7 @@ public class flyingFishAtk : Interactable
         if ((Input.GetKeyUp(KeyCode.K)) && PlayerInRangeATK(playerAttackRadius))
         {
             TakeDamage(1); 
+            StartCoroutine(changeColorFish());
         }
 
         //enemy atk
@@ -133,5 +140,32 @@ public class flyingFishAtk : Interactable
         {
             collision.GetComponent<Health>().TakeDamage(1);
         }
+    }
+
+    public void ChangeFishToRed()
+    {
+        fishRenderer.material = redFishMaterial;
+    }
+
+    public void ResetFishColor()
+    {
+        fishRenderer.material = defaultFishMaterial;
+    }
+
+    IEnumerator changeColorFish()
+    {
+        float initialTime = Time.time;
+ 
+            ChangeFishToRed();
+            Debug.Log("red fish");
+
+            while (Time.time < initialTime + durationHurt)
+            {
+                yield return null;
+            }
+
+            ResetFishColor();
+            Debug.Log("reset color fish");
+    
     }
 }

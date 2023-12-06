@@ -6,6 +6,7 @@ public class TentacleControllerHealth : MonoBehaviour
 {
     private enemyStats stats;
     public bool canDamage = false;
+    public TentacleController tentacleController;
 
     private void Awake()
     {
@@ -19,6 +20,14 @@ public class TentacleControllerHealth : MonoBehaviour
 
             Debug.Log("Dano no octoppus");
             stats.TakeDamage(1);
+            if (tentacleController != null)
+            {
+                tentacleController.StartCoroutine(tentacleController.changeColorTentacles());
+            }
+            else
+            {
+                Debug.LogWarning("TentacleController não foi atribuído a TentacleControllerHealth.");
+            }        
         }
     }
 

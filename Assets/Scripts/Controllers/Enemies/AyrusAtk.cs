@@ -22,6 +22,8 @@ public class AyrusAtk : Interactable
     private float attackLifetime = 5f;
     public float playerAttackRadius = 5f;
 
+    public float shootingAnim;
+
     private void Awake()
     {
         currentHealth = maxHealth;

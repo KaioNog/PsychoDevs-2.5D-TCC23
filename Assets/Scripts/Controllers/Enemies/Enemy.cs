@@ -38,23 +38,22 @@ public class Enemy : Interactable
             {
                 attackTimer = 0f;
                 AttackPlayer();
-            }  
-            /*else
-            {
-                Anim.SetBool("atk", false);
-            }*/       
+            }     
         }
     }
-
 
     private void AttackPlayer()
     {
         if (PlayerInRange())
         {
-            Anim.SetTrigger("atk");
+            Anim.SetBool("atk", true);
             Health playerHealth = FindObjectOfType<Health>();
             playerHealth.TakeDamage(damage);
         }
+        else
+        {
+            Anim.SetBool("atk", false);
+        }  
     }
 
     public override void Interact()
@@ -99,5 +98,4 @@ public class Enemy : Interactable
             Debug.Log("Dano Shoot");
         }
     }
-
 }

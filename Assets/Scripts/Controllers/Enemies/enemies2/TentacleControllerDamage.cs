@@ -15,18 +15,6 @@ public class TentacleControllerDamage : MonoBehaviour
         stats = GetComponentInParent<enemyStats>();
     }
 
-    void Update()
-    {
-        /*if (Input.GetKeyUp(KeyCode.K))
-        {
-            if (canDamage)
-            {
-                Debug.Log("Dano no octoppus");
-                stats.TakeDamage(1);
-            }
-        }*/
-    }
-
     private void OnTriggerEnter(Collider collision)
     {
         if(collision.tag == "Player")

@@ -10,10 +10,15 @@ public class TentacleController : Interactable
     public float attackCooldown = 2f;
     private bool isAttacking = false;
     public GameObject tentacleColliderObject;
+    public SkinnedMeshRenderer tentacleRenderer; // Use SkinnedMeshRenderer para personagens com animações complexas
+    public Material defaultTentacleMaterial;
+    public Material redTentacleMaterial;
+    private float durationHurt = 0.2f;
 
     private void Awake()
     {
         stats = GetComponent<enemyStats>();
+        tentacleRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
     }
 
     private void Update()
@@ -51,5 +56,32 @@ public class TentacleController : Interactable
 
         yield return new WaitForSeconds(attackCooldown);
         isAttacking = false;
+    }
+
+    public void ChangeTentacleToRed()
+    {
+        tentacleRenderer.material = redTentacleMaterial;
+    }
+
+    public void ResetTentacleColor()
+    {
+        tentacleRenderer.material = defaultTentacleMaterial;
+    }
+
+    public    IEnumerator changeColorTentacles()
+    {
+        float initialTime = Time.time;
+ 
+            ChangeTentacleToRed();
+            Debug.Log("red octopus");
+
+            while (Time.time < initialTime + durationHurt)
+            {
+                yield return null;
+            }
+
+            ResetTentacleColor();
+            Debug.Log("reset color octopus");
+    
     }
 }
