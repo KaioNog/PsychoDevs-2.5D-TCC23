@@ -71,4 +71,9 @@ public class menuManager : MonoBehaviour
     {
         SceneManager.LoadScene("lvl3");
     }
+
+    public void GoCarta()
+    {
+        SceneManager.LoadScene("Carta");
+    }
 }

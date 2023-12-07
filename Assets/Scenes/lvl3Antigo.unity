@@ -5388,6 +5388,7 @@ MonoBehaviour:
   maxHealth: 2
   attackSpeed: 2
   playerAttackRadius: 2
+  shootingAnim: 0
 --- !u!1 &1208719692
 GameObject:
   m_ObjectHideFlags: 0

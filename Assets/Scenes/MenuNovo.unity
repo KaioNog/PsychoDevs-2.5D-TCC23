@@ -498,7 +498,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 315758848}
         m_TargetAssemblyTypeName: menuManager, Assembly-CSharp
-        m_MethodName: StartGame
+        m_MethodName: GoCarta
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
